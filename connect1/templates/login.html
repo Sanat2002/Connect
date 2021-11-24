@@ -25,8 +25,9 @@
       <div class="bg-white d-flex flex-column align-items-center justify-content-space-between" style="height: 40vh;width:27vw ; padding: 1vw;border-radius: .7vw;">
         <form action="" method="POST">
         {% csrf_token %}
-        <input type="email" class="col-11" name="email" placeholder="Enter email" style="border-radius: .5vw;height: 2.5vw; margin-bottom: 1vw;border-color: rgb(200, 202, 204);">
-        <input type="text" class="col-11" name="password" placeholder="Password" style=" border-radius: .5vw;height: 2.5vw;margin-bottom: 1.8vw; border-color: rgb(200, 202, 204);">
+        {{form}}
+        {% comment %} <input type="email" class="col-11" name="email" placeholder="Enter email" style="border-radius: .5vw;height: 2.5vw; margin-bottom: 1vw;border-color: rgb(200, 202, 204);">
+        <input type="text" class="col-11" name="password" placeholder="Password" style=" border-radius: .5vw;height: 2.5vw;margin-bottom: 1.8vw; border-color: rgb(200, 202, 204);"> {% endcomment %}
         <input type="submit" value="Log In" class="btn btn-primary btn-sm col-12" style="font-size: 1.2vw; font-weight: bolder;">
         </form>
         <div class="bg-dark col-12" style="margin-top: 2vw;margin-bottom: 2vw; border: .5px solid rgb(179, 185, 181);"></div>
