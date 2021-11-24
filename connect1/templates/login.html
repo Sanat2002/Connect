@@ -22,15 +22,20 @@
         <p class="" style="font-size: 2vw;padding-right: vw;"> <span style="color:rgb(18, 196, 47);font-size: 2.4vw ;">Connect</span>  helps you connect and share with the people in your life.</p>
       </div>
 
-      <div class="bg-white d-flex flex-column align-items-center justify-content-space-between" style="height: 40vh;width:27vw ; padding: 1vw;border-radius: .7vw;">
+      <div class="bg-white d-flex flex-column align-items-center justify-content-space-between" style="height: 45vh;width:27vw ; padding: 1vw;border-radius: .7vw;">
         <form action="" method="POST">
         {% csrf_token %}
-        {{form}}
-        {% comment %} <input type="email" class="col-11" name="email" placeholder="Enter email" style="border-radius: .5vw;height: 2.5vw; margin-bottom: 1vw;border-color: rgb(200, 202, 204);">
-        <input type="text" class="col-11" name="password" placeholder="Password" style=" border-radius: .5vw;height: 2.5vw;margin-bottom: 1.8vw; border-color: rgb(200, 202, 204);"> {% endcomment %}
+        {% for field in form %}
+        {{field.errors}} {{field.label_tag}} {{field}}
+        {% endfor %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_fields_error %}
+        <p>{{error}}</p>
+        {% endfor %}
+        {% endif %}
         <input type="submit" value="Log In" class="btn btn-primary btn-sm col-12" style="font-size: 1.2vw; font-weight: bolder;">
         </form>
-        <div class="bg-dark col-12" style="margin-top: 2vw;margin-bottom: 2vw; border: .5px solid rgb(179, 185, 181);"></div>
+        <div class="bg-dark col-12" style="margin-top: 1.4vw;margin-bottom: 2vw; border: .5px solid rgb(179, 185, 181);"></div>
         <button class="btn btn-lg btn-success">Create new account</button>
       </div>
 
