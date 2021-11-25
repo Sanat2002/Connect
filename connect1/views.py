@@ -2,10 +2,11 @@ import django
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.shortcuts import render
-from .form import LoginForm
+from .form import LoginForm,RegistrationForm
 from django.contrib.auth import login,logout,authenticate
 
-# use your own customized form and just take the value from inputs and pass value to the django authentication form to authenticate 
+def register(request):
+    return render(request,"")
 
 def login(request):
     if request.method == "POST":
@@ -19,5 +20,7 @@ def login(request):
                 login(request,user)
                 messages.success(request,"Successfully Logged In...")
     else:
+        obj1 = RegistrationForm()
         obj = LoginForm()
-    return render(request,"login.html",{"form":obj})
+    return render(request,"login.html",{"form":obj,"form1":obj1})
+
