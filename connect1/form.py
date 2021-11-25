@@ -14,12 +14,3 @@ class LoginForm(AuthenticationForm):
         self.fields['password'].widget.attrs.update({
             'class':'col-11','style':'border-radius: .5vw;height: 2.5vw;margin-bottom: 1.6vw; margin-left:.7vw; border-color: rgb(200, 202, 204);','placeholder':'Password'
         })
-
-
-    class Meta:
-        model = User
-
-        fields = '__all__'
-        labels = {"username":"Userkname"}
-        
-
