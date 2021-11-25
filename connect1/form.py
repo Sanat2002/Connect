@@ -19,6 +19,7 @@ class LoginForm(AuthenticationForm):
         model = User
         fields = '__all__'
 
+
 class RegistrationForm(UserCreationForm):
     # password is not a part of form
     password1 = forms.CharField(label="Password",widget=forms.PasswordInput(attrs={'class':'col-12'}))
