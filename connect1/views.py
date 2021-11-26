@@ -19,12 +19,16 @@ def login(request):
             if get_user_model().objects.all():
                 if get_user_model().objects.get(email=email)==False:
                     if obj1.is_valid():
-                        obj1.save()
+                        o_obj1 = obj1.save()
+                        o_obj1.is_active = False
+                        o_obj1.save()
                 else:
                     messages.error(request,"Email is already taken...")
             else:
                 if obj1.is_valid():
-                    obj1.save()
+                    o_obj1 = obj1.save()
+                    o_obj1.is_active = False
+                    o_obj1.save()
         else:
             obj = LoginForm(request=request,data=request.POST)
             print(obj)
@@ -43,5 +47,4 @@ def login(request):
         return render(request,"login.html",{"form":obj,"form1":obj1})
     else:
         obj1 = RegistrationForm()
-        print("kd")
         return render(request,"login.html",{"form":obj,"form1":obj1})
