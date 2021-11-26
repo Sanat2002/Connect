@@ -16,23 +16,21 @@ def login(request):
         if email is not None:
             iscreatinguser = True
             obj1 = RegistrationForm(request.POST)
-            print(email)
-            if get_user_model().objects.get(email=email)==False:
-                print(obj1)
-                if obj1.is_valid():
-                    print("ls")
-                    obj1.save()
-                    print("lsss")
+            if get_user_model().objects.all():
+                if get_user_model().objects.get(email=email)==False:
+                    if obj1.is_valid():
+                        obj1.save()
+                else:
+                    messages.error(request,"Email is already taken...")
             else:
-                print(email)
-            # return HttpResponse("helo")
+                if obj1.is_valid():
+                    obj1.save()
         else:
             obj = LoginForm(request=request,data=request.POST)
             print(obj)
             if obj.is_valid():
                 print(uname,upass)
                 user = authenticate(username=uname,password=upass)
-                # print(user)
                 if user is not None:
                     login(request,user)
                     messages.success(request,"Successfully Logged In...")
