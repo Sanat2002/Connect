@@ -5,6 +5,7 @@ from django.shortcuts import render
 from .form import LoginForm,RegistrationForm
 from django.contrib.auth import get_user_model, login,logout,authenticate
 
+# now create two model classes one that store uuid for verify and other for profile
 
 def login(request):
     iscreatinguser = False
