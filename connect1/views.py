@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.http.response import HttpResponseRedirect
 from .models import userprofile,userverify
@@ -57,7 +56,6 @@ def login(request):
         else:
             obj = LoginForm(request=request,data=request.POST)
             if obj.is_valid():
-                print(uname,upass)
                 user = authenticate(username=uname,password=upass)
                 if user is not None:
                     auth_login(request,user)
@@ -106,4 +104,3 @@ def verify_email(request,auth_token):
 
     messages.error(request,"Email could not be verified...")
     return HttpResponseRedirect("/")
-
