@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('',views.login,name="login"),
-    path('verify/<auth_token>',views.verify_email,name="verifyemail")
+    path('verify/<auth_token>',views.verify_email,name="verifyemail"),
+    path('logout',views.userlogout,name="logout")
 ]

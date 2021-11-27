@@ -5,7 +5,8 @@ from django.http.response import HttpResponseRedirect
 from .models import userprofile,userverify
 from django.shortcuts import render
 from .form import LoginForm,RegistrationForm
-from django.contrib.auth import get_user_model, login,logout,authenticate
+from django.contrib.auth import get_user_model,logout,authenticate
+from django.contrib.auth import login as auth_login
 import uuid
 from django.core.mail import send_mail
 from django.conf import settings
@@ -59,7 +60,7 @@ def login(request):
                 print(uname,upass)
                 user = authenticate(username=uname,password=upass)
                 if user is not None:
-                    login(request,user)
+                    auth_login(request,user)
                     messages.success(request,"Successfully Logged In...")
     else:
         obj1 = RegistrationForm()
@@ -71,6 +72,17 @@ def login(request):
     else:
         obj1 = RegistrationForm()
         return render(request,"login.html",{"form":obj,"form1":obj1})
+
+
+def userlogout(request):
+    logout(request)
+    messages.success(request,"Logout")
+    return HttpResponseRedirect("/")
+
+
+
+
+
 
 def sendemailver(email,auth_token):
     subject = "To verify email!!!"
@@ -94,3 +106,4 @@ def verify_email(request,auth_token):
 
     messages.error(request,"Email could not be verified...")
     return HttpResponseRedirect("/")
+
