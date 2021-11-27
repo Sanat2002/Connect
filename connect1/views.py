@@ -26,7 +26,7 @@ def login(request):
                 if get_user_model().objects.get(email=email)==False:
                     if obj1.is_valid():
 
-                        auth_token = str(uuid.uuid4)
+                        auth_token = str(uuid.uuid4())
                         u = userverify(name=uname,token=auth_token)
                         u.save()
 
@@ -42,12 +42,12 @@ def login(request):
             else:
                 if obj1.is_valid():
 
-                    auth_token = str(uuid.uuid4)
+                    auth_token = str(uuid.uuid4())
                     u = userverify(name=uname,token=auth_token)
                     u.save()
 
                     o_obj1 = obj1.save()
-                    o_obj1.is_active = False
+                    o_obj1.is_active = False # is_active means that is user can login or not (when it is false it treat user as inactive(or as deactivated account))
                     o_obj1.save()
 
                     sendemailver(email,auth_token)
@@ -82,14 +82,15 @@ def sendemailver(email,auth_token):
 def verify_email(request,auth_token):
     obj = userverify.objects.get(token=auth_token)
     if obj:
-        user = get_user_model().objects.get(name=obj.name)
+        user = get_user_model().objects.get(username=obj.name)
         user.is_active = True
         user.save()
 
-        obj1 = userprofile(name=user.name,email=user.email)
+        obj1 = userprofile(name=user.username,email=user.email)
         obj1.save()
 
-        return HttpResponseRedirect("/login")
+        messages.success(request,"Email Verified...")
+        return HttpResponseRedirect("/")
 
     messages.error(request,"Email could not be verified...")
     return HttpResponseRedirect("/")
