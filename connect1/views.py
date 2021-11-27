@@ -1,9 +1,14 @@
 from django.contrib import messages
+from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.http.response import HttpResponse
+from django.http.response import HttpResponseRedirect
+from .models import userprofile,userverify
 from django.shortcuts import render
 from .form import LoginForm,RegistrationForm
 from django.contrib.auth import get_user_model, login,logout,authenticate
+import uuid
+from django.core.mail import send_mail
+from django.conf import settings
 
 # now create two model classes one that store uuid for verify and other for profile
 
@@ -20,19 +25,36 @@ def login(request):
             if get_user_model().objects.all():
                 if get_user_model().objects.get(email=email)==False:
                     if obj1.is_valid():
+
+                        auth_token = str(uuid.uuid4)
+                        u = userverify(name=uname,token=auth_token)
+                        u.save()
+
                         o_obj1 = obj1.save()
                         o_obj1.is_active = False
                         o_obj1.save()
+
+                        sendemailver(email,auth_token)
+                        
+                        messages.success(request,"Email verification link sent to your mail...")
                 else:
                     messages.error(request,"Email is already taken...")
             else:
                 if obj1.is_valid():
+
+                    auth_token = str(uuid.uuid4)
+                    u = userverify(name=uname,token=auth_token)
+                    u.save()
+
                     o_obj1 = obj1.save()
                     o_obj1.is_active = False
                     o_obj1.save()
+
+                    sendemailver(email,auth_token)
+
+                    messages.success(request,"Email verification link sent to your mail...")
         else:
             obj = LoginForm(request=request,data=request.POST)
-            print(obj)
             if obj.is_valid():
                 print(uname,upass)
                 user = authenticate(username=uname,password=upass)
@@ -49,3 +71,25 @@ def login(request):
     else:
         obj1 = RegistrationForm()
         return render(request,"login.html",{"form":obj,"form1":obj1})
+
+def sendemailver(email,auth_token):
+    subject = "To verify email!!!"
+    msg = f'Hi click the link to verify your account http://127.0.0.1:8000/verify/{auth_token}'
+    email_from = settings.EMAIL_HOST_USER
+    receiver = [email]
+    send_mail(subject,msg,email_from,receiver)
+
+def verify_email(request,auth_token):
+    obj = userverify.objects.get(token=auth_token)
+    if obj:
+        user = get_user_model().objects.get(name=obj.name)
+        user.is_active = True
+        user.save()
+
+        obj1 = userprofile(name=user.name,email=user.email)
+        obj1.save()
+
+        return HttpResponseRedirect("/login")
+
+    messages.error(request,"Email could not be verified...")
+    return HttpResponseRedirect("/")
