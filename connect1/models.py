@@ -11,6 +11,7 @@ class userverify(models.Model):
 class userprofile(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField()
+    profile_pic = models.ImageField(blank=True,null=True)
 
     def __str__(self):
         return self.name
