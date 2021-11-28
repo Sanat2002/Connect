@@ -59,7 +59,7 @@ def login(request):
                 user = authenticate(username=uname,password=upass)
                 if user is not None:
                     auth_login(request,user)
-                    messages.success(request,"Successfully Logged In...")
+                    return render(request,"home.html")
     else:
         obj1 = RegistrationForm()
         obj = LoginForm()
@@ -72,9 +72,10 @@ def login(request):
         return render(request,"login.html",{"form":obj,"form1":obj1})
 
 
+
 def userlogout(request):
     logout(request)
-    messages.success(request,"Logout")
+    messages.success(request,"Successfully Logged Out!!!")
     return HttpResponseRedirect("/")
 
 
