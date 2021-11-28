@@ -27,6 +27,19 @@
           background-color: rgb(87, 78, 78);
         }
       }
+      /* this is how we can hide scrollbar */
+      .sugp{
+        overflow-x: scroll;
+      }
+      .sugp::-webkit-scrollbar{
+        display: none;
+      }
+      .peopstories{
+        overflow-x: scroll;
+      }
+      .peopstories::-webkit-scrollbar{
+        display: none;
+      }
     </style>
 
   </head>
@@ -45,33 +58,33 @@
 
         <div class="text-center text-white" style="background-color: rgb(62, 216, 80);height: 2vw;font-size: 1.4vw;">Connect</div>
 
-        <div class="d-flex">
+        <div class="d-flex peopstories">
 
-          <div class="d-flex flex-column" style="margin: .2vw;">
+          <div class="d-flex flex-column align-items-center" style="margin: .2vw; width: 6vw;">
           <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 20vw;cursor: pointer;"></div>
           <div class="text-center">Sia</div>
           </div>
 
-          <div class="d-flex flex-column" style="margin: .2vw;">
+          <div class="d-flex flex-column align-items-center" style=" margin: .2vw;width: 6vw;">
           <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 20vw;cursor: pointer;"></div>
           <div class="text-center">Sweeny Todd</div>
           </div>
         
-          <div class="d-flex flex-column" style="margin: .2vw;">
+          <div class="d-flex flex-column align-items-center" style="margin: .2vw; width: 6vw;">
           <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 20vw;cursor: pointer;"></div>
-          <div class="text-center">Will smith</div>
+          <div class="text-center">Will Smith</div>
           </div>
 
         </div>
 
         <div style="border: .2px solid black;"></div>
 
-        <div class="d-flex">
+        <div class="d-flex sugp">
 
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
             </div>
-            <div class="text-center">Sean Paul</div>
+            <div class="text-center">Sea</div>
             <div class="text-center btn btn-success" style="font-size: 1vw;">Connect</div>
           </div>
 
