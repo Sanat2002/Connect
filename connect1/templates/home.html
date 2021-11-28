@@ -8,7 +8,25 @@
 
     <title>Connect - Home</title>
     <style>
-
+      .showani{
+        position: absolute;
+        top: .2vw;
+        left: 0;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 10vw;
+        background-color: black;
+        animation-name: sani;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        cursor: pointer;
+      }
+      @keyframes sani {
+        50%{
+          left: 3.5vw;
+          background-color: rgb(87, 78, 78);
+        }
+      }
     </style>
 
   </head>
@@ -19,13 +37,13 @@
       <div style="margin-left: 2vw;margin-top: 1vw;">
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>
-        <div style="margin-top: 1vw;">Sanat Thakur</div>
-        <div>sanatthakur2002@gmail.com</div>
+        <div style="margin-top: 1vw; font-size: 2.5vw;" >Sanat Thakur</div>
+        <div style="font-size: 1.5vw;">sanatthakur2002@gmail.com</div>
       </div>
 
       <div style="border: 2px solid black;width: 50vw; margin-left: 10vw;margin-top: 1vw;">
 
-        <div class="text-center text-white" style="background-color: rgb(62, 216, 80);">Connect</div>
+        <div class="text-center text-white" style="background-color: rgb(62, 216, 80);height: 2vw;font-size: 1.4vw;">Connect</div>
 
         <div class="d-flex">
 
@@ -85,22 +103,32 @@
 
     </div>
 
-    <div style="position: absolute;top: 0; cursor: pointer; font-size: 2vw;" id="show">-></div>
-    <div style="width: 20vw;height: 100vh;background-color: rgb(35, 41, 36);position: absolute;top: 0;left: 0vw;" id="sidebar">
+    <div class="showani"  id="show"></div>
+    <div style="width: 20vw;height: 100vh;background-color: rgb(35, 41, 36);position: absolute;top: 0;left: -20vw; transition: all 1s;" id="sidebar">
 
-      <div id="hide" class="text-end" style="cursor: pointer; font-size: 2vw;"> <- </div>
+      <div id="hide" class="text-end" style="cursor: pointer; font-size: 4vw;color: white;transform: rotate(-13deg);">+</div>
 
       <div class="d-flex flex-column" style="margin-left:1vw">
       <div style="height:10vw;width:10vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
       <div class="text-white" style="font-size: 2vw;">Sanat Thakur</div>
-      <div class="text-white" style="font-size: 1.2vw;">sanatthakur2002</div>
+      <div class="text-white" style="font-size: 1.3vw;">sanatthakur2002@gmail.com</div>
       </div>
 
       <div style="border: .2px solid white; margin: .2vw .5vw;"></div>
 
-      <div class="d-flex flex-column" style="background-color: wheat;height: 4vw;width: 17.9vw;margin: 1vw 1vw;">
-        <img src="" alt="">
-        <div>Profile</div>
+      <div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;cursor: pointer;">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" height="37vw" alt="" style="margin-top: .3vw; margin-left: .5vw;"/>
+        <div class="text-center text-white" style="font-size: 1.4vw;margin-top: .4vw;width: 20vw;">Profile</div>
+      </div>
+
+      <div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw; cursor: pointer;">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/password1.png" alt="" style="margin-top: .3vw;margin-left: .5vw;" height="37vw" />
+        <div class="text-center text-white" style="font-size: 1.2vw;margin-top: .5vw;width: 20vw;">Change Password</div>
+      </div>
+
+      <div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw; cursor: pointer;">
+        <img src="https://img.icons8.com/external-sbts2018-mixed-sbts2018/58/000000/external-logout-social-media-basic-1-sbts2018-mixed-sbts2018.png" alt="" style="margin-top: .3vw;margin-left: .5vw;" height="33vw"/>
+        <div class="text-center text-white" style="font-size: 1.2vw;margin-top: .5vw;width: 20vw;">Logout<div>
       </div>
 
     </div>
