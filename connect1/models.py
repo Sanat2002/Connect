@@ -12,6 +12,9 @@ class userprofile(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField()
     profile_pic = models.ImageField(blank=True,null=True)
+    bio = models.CharField(max_length=5000,blank=True)
+    phoneno = models.BigIntegerField(blank=True,default=0)
+    gender = models.CharField(blank=True,max_length=10)
 
     def __str__(self):
         return self.name
