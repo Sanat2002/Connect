@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordChangeForm
 from django.http.response import HttpResponseRedirect
 from .models import userprofile,userverify
 from django.shortcuts import render
@@ -72,16 +72,15 @@ def login(request):
         return render(request,"login.html",{"form":obj,"form1":obj1})
 
 
+def changepassword(request):
+    obj = PasswordChangeForm(request)
+    return render(request,"changepassword.html",{"form":obj})
+
 
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
     return HttpResponseRedirect("/")
-
-
-
-
-
 
 def sendemailver(email,auth_token):
     subject = "To verify email!!!"
