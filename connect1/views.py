@@ -83,7 +83,14 @@ def profile(request):
 
 def changepassword(request):
     if request.user.is_authenticated:
-        obj = PasswordChangeForm(request)
+        if request.method == "POST":
+            obj = PasswordChangeForm(user=request.user,data=request.POST)
+            if obj.is_valid():
+                messages.success(request,"Password Changed!!!")
+                obj.save()
+                return HttpResponseRedirect("/")
+        else:
+            obj = PasswordChangeForm(request)
         return render(request,"changepassword.html",{"form":obj})
     return HttpResponseRedirect("/")
 
