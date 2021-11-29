@@ -59,7 +59,7 @@ def login(request):
                 user = authenticate(username=uname,password=upass)
                 if user is not None:
                     auth_login(request,user)
-                    return render(request,"home.html")
+                    return HttpResponseRedirect("/home")
     else:
         obj1 = RegistrationForm()
         obj = LoginForm()
@@ -71,10 +71,21 @@ def login(request):
         obj1 = RegistrationForm()
         return render(request,"login.html",{"form":obj,"form1":obj1})
 
+def home(request):
+    if request.user.is_authenticated:
+        return render(request,"home.html")
+    return HttpResponseRedirect("/")
+
+def profile(request):
+    if request.user.is_authenticated:
+        return render(request,"profile.html")
+    return HttpResponseRedirect("/")
 
 def changepassword(request):
-    obj = PasswordChangeForm(request)
-    return render(request,"changepassword.html",{"form":obj})
+    if request.user.is_authenticated:
+        obj = PasswordChangeForm(request)
+        return render(request,"changepassword.html",{"form":obj})
+    return HttpResponseRedirect("/")
 
 
 def userlogout(request):
