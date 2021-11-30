@@ -78,6 +78,27 @@ def home(request):
 
 def profile(request):
     if request.user.is_authenticated:
+        us = get_user_model().objects.get(username=request.user)
+        us2 = userprofile.objects.get(name=request.user)
+        print(us2.name)
+        if request.method == "POST":
+            username = request.POST.get('username')
+            bio = request.POST.get('bio')
+            email = request.POST.get('email')
+            phno = request.POST.get('phno')
+            gender = request.POST.get('gender')
+            
+            us.username = username
+            us2.name = username
+            us.email = email
+            us2.email = email
+            us2.bio = bio
+            us2.phoneno = phno
+            us2.gender = gender
+
+            us.save()
+            # us2.save()
+            messages.success(request,"Profile updated!!!")
         return render(request,"profile.html")
     return HttpResponseRedirect("/")
 
