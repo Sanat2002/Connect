@@ -3,14 +3,15 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,Passwo
 from django.http.response import HttpResponseRedirect
 from .models import userprofile,userverify
 from django.shortcuts import render
-from .form import LoginForm,RegistrationForm,updateprofile
+from .form import LoginForm,RegistrationForm
 from django.contrib.auth import get_user_model,logout,authenticate
 from django.contrib.auth import login as auth_login
 import uuid
 from django.core.mail import send_mail
 from django.conf import settings
 
-# now create two model classes one that store uuid for verify and other for profile
+# if in case in mongodb the document 'id'(it is not a object '_id'(default)) does not exist then , delete the whole data base and create new one 
+# here 'id' is 1,2,3 not object id which is default see Blogapp documents
 
 def login(request):
     iscreatinguser = False
@@ -77,12 +78,10 @@ def home(request):
         return render(request,"home.html",{"obj":obj})
     return HttpResponseRedirect("/")
 
-def profile(request,id):
-    print(id)
+def profile(request):
     if request.user.is_authenticated:
         us = get_user_model().objects.get(username=request.user)
-        # us2 = userprofile.objects.get(name=request.user)
-        # print(userprofile.objects.all()[0].id)
+        us2 = userprofile.objects.get(name=request.user)
         if request.method == "POST":
             username = request.POST.get('username')
             bio = request.POST.get('bio')
@@ -91,24 +90,12 @@ def profile(request,id):
             gender = request.POST.get('gender')
             
             us.username = username
-            # us2.name = username
             us.email = email
-            # us2.email = email
-            # us2.bio = bio
-            # us2.phoneno = phno
-            # us2.gender = gender
 
-            # us.save()
-            # us2 = userprofile.objects.get(id=id)
-            u = userprofile(id=id,name=username,bio=bio,email=email,phoneno=phno,gender=gender)
+            us.save()
+            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender)
             u.save()
-            
-            # input 'name' should be equal to model name
-            # u = updateprofile(request.POST,instance=us2)
-            # print(u)
-            # if u.is_valid():
-            #     u.save()
-                # messages.success(request,"Profile updated!!!")
+            messages.success(request,"Profile updated!!!")
         return render(request,"profile.html")
     return HttpResponseRedirect("/")
 

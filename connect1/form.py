@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.forms import fields, widgets
-from .models import userprofile
 
 class LoginForm(AuthenticationForm):
 
@@ -30,9 +29,3 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ['username','first_name','last_name','email']
         widgets = {'username':widgets.TextInput(attrs={'class':'col-12'}),'first_name':widgets.TextInput(attrs={'class':'col-5'}),'last_name':widgets.TextInput(attrs={'class':'col-5'}),'email':widgets.EmailInput(attrs={'required':True,'class':'col-12'})}
-
-
-class updateprofile(forms.ModelForm):
-    class Meta:
-        model = userprofile
-        fields = "__all__"
