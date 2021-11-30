@@ -15,9 +15,12 @@
 
 <body>
 
+
+    <a href="/home"><button class="btn btn-primary" style="margin: .4vw;">Back</button></a>
+
     <form action="" method="POST">
         {% csrf_token %}
-        <div class="d-flex flex-column align-items-center" style="margin-top: 2vw;">
+        <div class="d-flex flex-column align-items-center" style="margin-top: 1vw;">
 
             <div class="d-flex flex-column align-items-center" style="margin-bottom: 2vw;">
                 <div style="height: 10vw;width: 10vw;background-color: black;border-radius: 20vw;"></div>
@@ -31,6 +34,7 @@
 
             <div class="d-flex justify-content-between" style="margin-bottom: 2vw;width: 35vw;">
                 <div style="font-size: 1.5vw;">Bio : </div>
+                {% comment %} this is how we add default value to the textarea {% endcomment %}
                 <textarea name="bio" id="" cols="23" rows="2" placeholder="Here,i am using Connect">{{user.bio}}</textarea>
             </div>
 

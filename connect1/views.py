@@ -82,7 +82,6 @@ def profile(request):
     if request.user.is_authenticated:
         us = get_user_model().objects.get(username=request.user)
         us2 = userprofile.objects.get(name=request.user)
-        print(us2.bio)
         if request.method == "POST":
             username = request.POST.get('username')
             bio = request.POST.get('bio')
@@ -96,6 +95,7 @@ def profile(request):
 
             u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender)
             u.save()
+            us2 = userprofile.objects.get(name=username)
             messages.success(request,"Profile updated!!!")            
         return render(request,"profile.html",{"user":us2})
     return HttpResponseRedirect("/")
