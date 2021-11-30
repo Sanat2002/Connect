@@ -80,7 +80,7 @@ def profile(request):
     if request.user.is_authenticated:
         us = get_user_model().objects.get(username=request.user)
         us2 = userprofile.objects.get(name=request.user)
-        print(us2.name)
+        # print(userprofile.objects.all()[0].id)
         if request.method == "POST":
             username = request.POST.get('username')
             bio = request.POST.get('bio')
