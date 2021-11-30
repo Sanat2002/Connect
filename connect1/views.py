@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,Passwo
 from django.http.response import HttpResponseRedirect
 from .models import userprofile,userverify
 from django.shortcuts import render
-from .form import LoginForm,RegistrationForm
+from .form import LoginForm,RegistrationForm,updateprofile
 from django.contrib.auth import get_user_model,logout,authenticate
 from django.contrib.auth import login as auth_login
 import uuid
@@ -97,8 +97,11 @@ def profile(request):
             us2.gender = gender
 
             us.save()
-            # us2.save()
-            messages.success(request,"Profile updated!!!")
+            u = updateprofile(request.POST,instance=us2)
+            print(u)
+            if u.is_valid():
+                u.save()
+                messages.success(request,"Profile updated!!!")
         return render(request,"profile.html")
     return HttpResponseRedirect("/")
 
