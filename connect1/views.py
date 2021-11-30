@@ -73,13 +73,15 @@ def login(request):
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request,"home.html")
+        obj = userprofile.objects.get(name=request.user)
+        return render(request,"home.html",{"obj":obj})
     return HttpResponseRedirect("/")
 
-def profile(request):
+def profile(request,id):
+    print(id)
     if request.user.is_authenticated:
         us = get_user_model().objects.get(username=request.user)
-        us2 = userprofile.objects.get(name=request.user)
+        # us2 = userprofile.objects.get(name=request.user)
         # print(userprofile.objects.all()[0].id)
         if request.method == "POST":
             username = request.POST.get('username')
@@ -89,19 +91,24 @@ def profile(request):
             gender = request.POST.get('gender')
             
             us.username = username
-            us2.name = username
+            # us2.name = username
             us.email = email
-            us2.email = email
-            us2.bio = bio
-            us2.phoneno = phno
-            us2.gender = gender
+            # us2.email = email
+            # us2.bio = bio
+            # us2.phoneno = phno
+            # us2.gender = gender
 
-            us.save()
-            u = updateprofile(request.POST,instance=us2)
-            print(u)
-            if u.is_valid():
-                u.save()
-                messages.success(request,"Profile updated!!!")
+            # us.save()
+            # us2 = userprofile.objects.get(id=id)
+            u = userprofile(id=id,name=username,bio=bio,email=email,phoneno=phno,gender=gender)
+            u.save()
+            
+            # input 'name' should be equal to model name
+            # u = updateprofile(request.POST,instance=us2)
+            # print(u)
+            # if u.is_valid():
+            #     u.save()
+                # messages.success(request,"Profile updated!!!")
         return render(request,"profile.html")
     return HttpResponseRedirect("/")
 

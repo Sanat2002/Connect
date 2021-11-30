@@ -49,8 +49,8 @@
       <div style="margin-left: 2vw;margin-top: 1vw;">
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>
-        <div style="margin-top: 1vw; font-size: 2.5vw;" >Sanat Thakur</div>
-        <div style="font-size: 1.5vw;">sanatthakur2002@gmail.com</div>
+        <div style="margin-top: 1vw; font-size: 2.5vw;" >{{obj.name}}</div>
+        <div style="font-size: 1.5vw;">{{obj.email}}</div>
       </div>
 
       <div style="border: 2px solid black;width: 50vw; margin-left: 10vw;margin-top: 1vw;">
@@ -147,13 +147,13 @@
 
       <div class="d-flex flex-column" style="margin-left:1vw">
       <div style="height:10vw;width:10vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
-      <div class="text-white" style="font-size: 2vw;">Sanat Thakur</div>
-      <div class="text-white" style="font-size: 1.3vw;">sanatthakur2002@gmail.com</div>
+      <div class="text-white" style="font-size: 2vw;">{{obj.name}}</div>
+      <div class="text-white" style="font-size: 1.3vw;">{{obj.email}}</div>
       </div>
 
       <div style="border: .2px solid white; margin: .2vw .5vw;"></div>
 
-      <a href="/profile" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;cursor: pointer;">
+      <a href="{% url 'profile' obj.id %}" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;cursor: pointer;">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" height="37vw" alt="" style="margin-top: .3vw; margin-left: .5vw;"/>
         <div class="text-center text-white" style="font-size: 1.4vw;margin-top: .4vw;width: 20vw;">Profile</div>
       </div>

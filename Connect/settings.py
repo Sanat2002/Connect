@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'Connect.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'Connect',
+        'NAME': 'helo',
     }
 }
 
