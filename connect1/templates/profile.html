@@ -24,9 +24,13 @@
         <div class="d-flex flex-column align-items-center" style="margin-top: 1vw;">
 
             <div class="d-flex flex-column align-items-center" style="margin-bottom: 2vw;">
-                <div style="height: 10vw;width: 10vw;border-radius: 20vw;">
-                    <img src="{{user.profile_pic.url}}" alt="">
+                {% if user.profile_pic %}
+                <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 10vw;
+                width: 10vw; border-radius: 10vw;">
+                {% else %}
+                <div style="height: 10vw;width: 10vw;border-radius: 20vw;background-color:black;">
                 </div>
+                {% endif %}
                 <input type="file" name="profilepic" id="" style="margin-top: .5vw; margin-left: 4.5vw;">
             </div>
 

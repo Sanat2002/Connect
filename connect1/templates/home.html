@@ -47,8 +47,12 @@
     <div class="d-flex">
 
       <div style="margin-left: 2vw;margin-top: 1vw;width:30vw;">
+        {% if obj.profile_pic %}
+        <img src="{{obj.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+        {% else %}
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>
+        {% endif %}
         <div style="margin-top: 1vw; font-size: 2.5vw;" >{{obj.name}}</div>
         <div style="font-size: 1.5vw;">{{obj.email}}</div>
         <div style="font-size: 1vw;">{{obj.bio}}</div>
@@ -147,7 +151,11 @@
       <div id="hide" class="text-end" style="cursor: pointer; font-size: 4vw;color: white;transform: rotate(-13deg);">+</div>
 
       <div class="d-flex flex-column" style="margin-left:1vw">
-      <div style="height:10vw;width:10vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
+      {% if obj.profile_pic %}
+      <img src="{{obj.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+      {% else %}
+      <div style="height:15vw;width:15vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
+      {% endif %}
       <div class="text-white" style="font-size: 2vw;">{{obj.name}}</div>
       <div class="text-white" style="font-size: 1.3vw;">{{obj.email}}</div>
       </div>
