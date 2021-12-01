@@ -88,12 +88,14 @@ def profile(request):
             email = request.POST.get('email')
             phno = request.POST.get('phno')
             gender = request.POST.get('gender')
+            profilepic = request.FILES['profilepic']
+            print(profilepic.size)
             
             us.username = username
             us.email = email
             us.save()
 
-            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender)
+            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic)
             u.save()
             us2 = userprofile.objects.get(name=username)
             messages.success(request,"Profile updated!!!")            
