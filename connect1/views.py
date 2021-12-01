@@ -88,7 +88,7 @@ def profile(request):
             email = request.POST.get('email')
             phno = request.POST.get('phno')
             gender = request.POST.get('gender')
-            profilepic = request.FILES['profilepic']
+            profilepic = request.FILES['profilepic'] # add enctype="multipart/form-data" in form in html file in case of uploading files 
             print(profilepic.size)
             
             us.username = username
@@ -98,6 +98,7 @@ def profile(request):
             u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic)
             u.save()
             us2 = userprofile.objects.get(name=username)
+            print(us2.profile_pic.url)
             messages.success(request,"Profile updated!!!")            
         return render(request,"profile.html",{"user":us2})
     return HttpResponseRedirect("/")

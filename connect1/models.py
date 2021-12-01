@@ -1,4 +1,13 @@
 from django.db import models
+import datetime
+import os
+
+# so to save the uploaded images in specific folder with unique name
+def filepath(request, filename):
+    old_filename = filename
+    timeNow = datetime.datetime.now().strftime('%Y%m%d%H:%M:%S')
+    filename = "%s%s" % (timeNow, old_filename)
+    return os.path.join('uploads/', filename)
 
 class userverify(models.Model):
     name = models.CharField(max_length=20)
@@ -11,7 +20,7 @@ class userverify(models.Model):
 class userprofile(models.Model):
     name = models.CharField(max_length=20)
     email = models.EmailField()
-    profile_pic = models.ImageField(blank=True,null=True)
+    profile_pic = models.ImageField(upload_to=filepath,blank=True,null=True)
     bio = models.CharField(max_length=5000,blank=True)
     phoneno = models.BigIntegerField(blank=True,default=0)
     gender = models.CharField(blank=True,max_length=10)

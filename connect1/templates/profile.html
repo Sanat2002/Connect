@@ -18,12 +18,15 @@
 
     <a href="/home"><button class="btn btn-primary" style="margin: .4vw;">Home</button></a>
 
+    {% comment %} add enctype="multipart/form-data" in case of uploading images or files {% endcomment %}
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="d-flex flex-column align-items-center" style="margin-top: 1vw;">
 
             <div class="d-flex flex-column align-items-center" style="margin-bottom: 2vw;">
-                <div style="height: 10vw;width: 10vw;background-color: black;border-radius: 20vw;"></div>
+                <div style="height: 10vw;width: 10vw;border-radius: 20vw;">
+                    <img src="{{user.profile_pic.url}}" alt="">
+                </div>
                 <input type="file" name="profilepic" id="" style="margin-top: .5vw; margin-left: 4.5vw;">
             </div>
 
