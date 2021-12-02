@@ -89,14 +89,20 @@
 
         <div class="sugp" id="sugg">
 
+          {% for users in usersuggestions %}
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
+            {% if users.profile_pic %}
+            <img src="{{users.profile_pic.url}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;">
+            {% else %}
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
             </div>
-            <div class="text-center">Sea</div>
+            {% endif %}
+            <div class="text-center">{{users.name}}</div>
             <div class="text-center btn btn-success" style="font-size: 1vw;">Connect</div>
           </div>
+          {% endfor %}
 
-          <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
+          <!-- <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
             </div>
             <div class="text-center">Bruno Mars</div>
@@ -108,7 +114,7 @@
             </div>
             <div class="text-center">Wiz Khalifa</div>
             <div class="text-center btn btn-success" style="font-size: 1vw;">Connect</div>
-          </div>
+          </div> -->
 
         </div>
 
