@@ -28,6 +28,8 @@
       }
       /* this is how we can hide scrollbar */
       .sugp{
+        /* i have this display:flex here because when i use it as bootstrap class in div element , then js on this element does not works */
+        display: flex; 
         overflow-x: scroll;
       }
       .sugp::-webkit-scrollbar{
@@ -47,15 +49,15 @@
     <div class="d-flex">
 
       <div style="margin-left: 2vw;margin-top: 1vw;width:30vw;">
-        {% if obj.profile_pic %}
-        <img src="{{obj.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+        {% if user.profile_pic %}
+        <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
         {% else %}
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>
         {% endif %}
-        <div style="margin-top: 1vw; font-size: 2.5vw;" >{{obj.name}}</div>
-        <div style="font-size: 1.5vw;">{{obj.email}}</div>
-        <div style="font-size: 1vw;">{{obj.bio}}</div>
+        <div style="margin-top: 1vw; font-size: 2.5vw;" >{{user.name}}</div>
+        <div style="font-size: 1.5vw;">{{user.email}}</div>
+        <div style="font-size: 1vw;">{{user.bio}}</div>
       </div>
 
       <div style="border: 2px solid black;width: 50vw; margin-left: 1vw;margin-top: 1vw;">
@@ -83,9 +85,9 @@
 
         <div style="border: .2px solid black;"></div>
 
-        <div style="font-size: 1.3vw; margin-left: .2vw;">Suggestions</div>
+        <div class="btn" id="suggbtn" style="font-size: 1.3vw; margin: .2vw;color: white; background-color: rgb(71, 160, 71);">Suggestions</div>
 
-        <div class="d-flex sugp">
+        <div class="sugp" id="sugg">
 
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
@@ -153,13 +155,13 @@
       <div id="hide" class="text-end" style="cursor: pointer; font-size: 4vw;color: white;transform: rotate(-13deg);">+</div>
 
       <div class="d-flex flex-column" style="margin-left:1vw">
-      {% if obj.profile_pic %}
-      <img src="{{obj.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+      {% if user.profile_pic %}
+      <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
       {% else %}
       <div style="height:15vw;width:15vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
       {% endif %}
-      <div class="text-white" style="font-size: 2vw;">{{obj.name}}</div>
-      <div class="text-white" style="font-size: 1.3vw;">{{obj.email}}</div>
+      <div class="text-white" style="font-size: 2vw;">{{user.name}}</div>
+      <div class="text-white" style="font-size: 1.3vw;">{{user.email}}</div>
       </div>
 
       <div style="border: .2px solid white; margin: .2vw .5vw;"></div>
@@ -192,6 +194,20 @@
       document.getElementById("hide").addEventListener('click',(e)=>{
         var s = document.getElementById("sidebar");
         s.style.left = "-20vw"
+      })
+
+      document.getElementById("suggbtn").addEventListener('click',(e)=>{
+        var s = document.getElementById("sugg")
+        if(s.style.display=="none"){
+          s.style.display = "flex"
+          document.getElementById("suggbtn").style.backgroundColor = "rgb(71, 160, 71)"
+          document.getElementById("suggbtn").style.color = "white"
+        }
+        else{
+          s.style.display = "none"
+          document.getElementById("suggbtn").style.backgroundColor = "#ffc107"
+          document.getElementById("suggbtn").style.color = "black"
+        }
       })
     </script>
 

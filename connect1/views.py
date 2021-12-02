@@ -74,8 +74,8 @@ def login(request):
 
 def home(request):
     if request.user.is_authenticated:
-        obj = userprofile.objects.get(name=request.user)
-        return render(request,"home.html",{"obj":obj})
+        user = userprofile.objects.get(name=request.user)
+        return render(request,"home.html",{"user":user})
     return HttpResponseRedirect("/")
 
 def profile(request):
