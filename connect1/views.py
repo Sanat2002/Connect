@@ -88,8 +88,11 @@ def profile(request):
             email = request.POST.get('email')
             phno = request.POST.get('phno')
             gender = request.POST.get('gender')
-            profilepic = request.FILES['profilepic'] # add enctype="multipart/form-data" in form in html file in case of uploading files 
-            print(profilepic.size)
+            if len(request.FILES) != 0:
+                profilepic = request.FILES['profilepic'] # add enctype="multipart/form-data" in form in html file in case of uploading files 
+                print(profilepic.size)
+            else:
+                profilepic = us2.profile_pic
             
             us.username = username
             us.email = email
