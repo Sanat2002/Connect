@@ -23,11 +23,10 @@ def login(request):
         if email is not None:
             iscreatinguser = True
             obj1 = RegistrationForm(request.POST)
-            print(email)
+            # use this logic in order to check the user with this email already exist in usermodel
             if get_user_model().objects.all():
-                if get_user_model().objects.get(email=email)==False:
+                if len(get_user_model().objects.filter(email=email))==0:
                     if obj1.is_valid():
-
                         auth_token = str(uuid.uuid4())
                         u = userverify(name=uname,token=auth_token)
                         u.save()
