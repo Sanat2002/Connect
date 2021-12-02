@@ -23,6 +23,7 @@ def login(request):
         if email is not None:
             iscreatinguser = True
             obj1 = RegistrationForm(request.POST)
+            print(email)
             if get_user_model().objects.all():
                 if get_user_model().objects.get(email=email)==False:
                     if obj1.is_valid():
