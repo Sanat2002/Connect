@@ -121,6 +121,15 @@ def changepassword(request):
         return render(request,"changepassword.html",{"form":obj})
     return HttpResponseRedirect("/")
 
+def posts(request):
+    if request.user.is_authenticated:
+        u = userprofile.objects.get(name=request.user)
+        u.posts = ['heo','lsls']
+        u.save()
+        print(u.posts)
+        return render(request,'posts.html')
+    return HttpResponseRedirect("/login")
+
 
 def userlogout(request):
     logout(request)
