@@ -20,6 +20,8 @@
       .allposts::-webkit-scrollbar{
         display: none;
       }
+
+
     </style>
 
   </head>
@@ -53,14 +55,15 @@
 
     </div>
 
+    <!-- here i have used bootstrap classes but when i apply js this give some problem so i gave my custom class with same bootstrap style-->
     <div class="d-flex justify-content-center align-items-center" style="width: 100vw;height: 100vh;position: absolute;top: 0;background-color: rgb(0, 0, 0,.7);">
       <div style="background-color: white;height: 35vw;width: 60vw;">
 
         <img src="" alt="" style="width: 60vw;height: 32vw;">
 
-        <div class="d-flex">
-          <button class="btn btn-warning">Cancle</button>
-          <button class="btn btn-danger">Delete</button>
+        <div class="d-flex justify-content-end" style="margin-top: .3vw;">
+          <button class="btn btn-warning" style="margin-right: .5vw;">Cancle</button>
+          <button class="btn btn-danger" style="margin-right: .3vw;">Delete</button>
         </div>
 
       </div>
