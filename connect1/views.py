@@ -126,7 +126,7 @@ def posts(request):
         u = userprofile.objects.get(name=request.user)
         u.posts = ['heo','lsls']
         u.save()
-        print(u.posts)
+        print(u.posts[0])
         return render(request,'posts.html')
     return HttpResponseRedirect("/login")
 

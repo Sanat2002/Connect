@@ -24,6 +24,7 @@ class userprofile(models.Model):
     bio = models.CharField(max_length=5000,blank=True)
     phoneno = models.BigIntegerField(blank=True,default=0)
     gender = models.CharField(blank=True,max_length=10)
+    toaddpost = models.ImageField(upload_to=filepath,blank=True,null=True)
     posts = models.JSONField(default=dict) # user jsonField in order to store lists,map,dict
 
     def __str__(self):
