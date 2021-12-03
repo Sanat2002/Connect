@@ -123,10 +123,24 @@ def changepassword(request):
 
 def posts(request):
     if request.user.is_authenticated:
-        u = userprofile.objects.get(name=request.user)
-        u.posts = ['heo','lsls']
-        u.save()
-        print(u.posts[0])
+        user = userprofile.objects.get(name=request.user)
+        if request.method == "POST":
+            # if len(request.FILES['addimage']) !=0:
+            #     toaddpost = request.FILES['addimage']
+            # else:
+            #     toaddpost = user.toaddpost
+
+            # if user.posts == None:
+            #     posts = [toaddpost]
+            # else:
+            #     posts = user.posts
+            #     posts.append(toaddpost)
+            # print(type(posts))
+            user.posts = ["hle",'la']
+            user.save()
+            # u = userprofile(id=user.id,name=user.name,bio=user.bio,email=user.email,phoneno=user.phoneno,gender=user.gender,profile_pic=user.profile_pic,toaddpost=toaddpost,posts=posts)
+            # u.save()
+
         return render(request,'posts.html')
     return HttpResponseRedirect("/login")
 

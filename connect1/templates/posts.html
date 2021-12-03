@@ -21,7 +21,7 @@
         display: none;
       }
       .showimg{
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         width: 100vw;
@@ -42,9 +42,12 @@
        <a href="/home"><button class="btn btn-primary" style="margin: .4vw;">Home</button></a>
 
        <div class="d-flex flex-column justify-content-center" style="height: 44vw;">
-       <input type="file" style="margin-top: 3vw;margin-left: 1vw;">
-       <input type="submit" class="btn btn-warning" value="Post it" id="" style="margin-top: 2vw; margin-left: 7vw; font-size: 1.2vw; width: 6vw;">
-      </div>
+         <form action="" method = "POST" enctype="multipart/form-data">
+           {% csrf_token %}
+          <input type="file" name="addimage" style="margin-top: 3vw;margin-left: 1vw;">
+          <input type="submit" class="btn btn-warning" value="Post it" id="" style="margin-top: 2vw; margin-left: 7vw; font-size: 1.2vw; width: 6vw;">
+         </form>
+       </div>
       </div>
 
       <div class="d-flex flex-column" style="width: 80vw;">
