@@ -125,6 +125,7 @@ def changepassword(request):
 def posts(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
+        posts = user.posts
         if request.method == "POST":
             user.toaddpost = request.FILES['addimage']
             user.save()
@@ -136,8 +137,8 @@ def posts(request):
                 user.posts = [user.toaddpost.name]
             user.save()
             messages.success(request,"Post Uploaded!!!")
-
-        return render(request,'posts.html')
+            posts = user.posts
+        return render(request,'posts.html',{"posts":posts})
     return HttpResponseRedirect("/login")
 
 

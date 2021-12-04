@@ -61,10 +61,9 @@
 
         <div class="allposts">
 
-          <div style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;"></div>
-          <div style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;"></div>
-          <div style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;"></div>
-          <div style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;"></div>
+          {% for post in posts %}
+            <img src="{{post}}" alt="Error in loading post" style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;">
+          {% endfor %}
 
         </div>
 
