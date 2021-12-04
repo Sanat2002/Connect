@@ -90,9 +90,10 @@ def profile(request):
             email = request.POST.get('email')
             phno = request.POST.get('phno')
             gender = request.POST.get('gender')
-            if len(request.FILES) != 0:
+            if len(request.FILES) != 0: # to check if any file is selected or not
                 profilepic = request.FILES['profilepic'] # add enctype="multipart/form-data" in form in html file in case of uploading files 
-                print(profilepic.size)
+                print(profilepic.size) # size of file
+                print(profilepic.name) # return name as string
             else:
                 profilepic = us2.profile_pic
             
@@ -125,40 +126,16 @@ def posts(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
         if request.method == "POST":
-            # if len(request.FILES['addimage']) !=0:
-            #     toaddpost = request.FILES['addimage']
-            # else:
-            #     toaddpost = user.toaddpost
-
-            # if user.posts == None:
-            #     posts = [toaddpost]
-            # else:
-            #     posts = user.posts
-            #     posts.append(toaddpost)
-            
-            if len(request.FILES['addimage']) !=0:
-                user.toaddpost = request.FILES['addimage']
-                user.save()
-                # user.posts = list(user.posts).append(str(user.toaddpost))
+            user.toaddpost = request.FILES['addimage']
+            user.save()
+            if type(user.posts) == list:
+                lst = list(user.posts)
+                lst.append(user.toaddpost.name) # user.toaddpost.name is used because jsonField does not store imageField object
+                user.posts = lst
+            else:
                 user.posts = [user.toaddpost.name]
-                user.save()
-            # else:
-            #     user.toaddpost = user.toaddpost
-
-            # if user.posts == None:
-            #     user.posts = []
-            # else:
-            #     posts = user.posts
-            #     posts.append(toaddpost)
-            # print(type(posts))
-            # user.posts = ["hle",'la']
-            print(type(user.toaddpost.name))
-            print(user.toaddpost.name)
-            print(type(user.posts))
-
-            # user.save()
-            # u = userprofile(id=user.id,name=user.name,bio=user.bio,email=user.email,phoneno=user.phoneno,gender=user.gender,profile_pic=user.profile_pic,toaddpost=toaddpost,posts=posts)
-            # u.save()
+            user.save()
+            messages.success(request,"Post Uploaded!!!")
 
         return render(request,'posts.html')
     return HttpResponseRedirect("/login")

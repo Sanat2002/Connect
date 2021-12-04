@@ -44,9 +44,14 @@
        <div class="d-flex flex-column justify-content-center" style="height: 44vw;">
          <form action="" method = "POST" enctype="multipart/form-data">
            {% csrf_token %}
-          <input type="file" name="addimage" style="margin-top: 3vw;margin-left: 1vw;">
+          <input type="file" name="addimage" required style="margin-top: 3vw;margin-left: 1vw;">
           <input type="submit" class="btn btn-warning" value="Post it" id="" style="margin-top: 2vw; margin-left: 7vw; font-size: 1.2vw; width: 6vw;">
          </form>
+         <div style="text-align: center;margin-top: 3vw;font-size: 1.3vw;color:green;font-weight:bolder;">
+           {% for message in messages %}
+           {{message}}
+           {% endfor %}
+         </div>
        </div>
       </div>
 
