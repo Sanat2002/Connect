@@ -101,7 +101,7 @@ def profile(request):
             us.email = email
             us.save()
 
-            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic)
+            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic,posts=us2.posts)
             u.save()
             us2 = userprofile.objects.get(name=username)
             print(us2.profile_pic.url)
@@ -144,14 +144,13 @@ def posts(request):
 def deletepost(request,postid):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
-        # print(postid.split(''))
-        print(list(postid))
-        # postid[4] = "w"
-        print(postid)
-        # lst = user.posts
-        # lst.remove(postid)
-        # user.posts = lst
-        # user.save()
+        lst = list(postid)
+        lst.insert(7,"/")
+        postid = "".join(lst)
+        lst2 = user.posts
+        lst2.remove(postid)
+        user.posts = lst2
+        user.save()
         return HttpResponseRedirect("/posts")
     return HttpResponseRedirect("/")
 
