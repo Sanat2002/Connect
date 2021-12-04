@@ -144,10 +144,14 @@ def posts(request):
 def deletepost(request,postid):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
-        lst = user.posts
-        lst.remove(postid)
-        user.posts = lst
-        user.save()
+        # print(postid.split(''))
+        print(list(postid))
+        # postid[4] = "w"
+        print(postid)
+        # lst = user.posts
+        # lst.remove(postid)
+        # user.posts = lst
+        # user.save()
         return HttpResponseRedirect("/posts")
     return HttpResponseRedirect("/")
 

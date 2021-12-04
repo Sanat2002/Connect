@@ -73,11 +73,26 @@
 
     <!-- here i have used bootstrap classes but when i apply js this give some problem so i gave my custom class with same bootstrap style -->
     <div class="showimg" id="showimg">
+      {% comment %} {% for post in posts %}
+      <div style="background-color: white;height: 45vw;width: 65vw;">
+
+        <img src="{{post}}" alt="Error in loading post!!!" style="width: 65vw;height: 42vw;">
+
+        <div class="d-flex justify-content-end" style="margin-top: .3vw;">
+          <button class="btn btn-warning" style="margin-right: .5vw;" onclick=hidepost() >Cancle</button>
+          <a href="{% url 'deletepost' post %}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
+        </div>
+
+        </div>
+      {% endfor %} {% endcomment %}
     </div>
 
     <script>
       function showpost(postid){
+        var chgpostid = postid
+        chgpostid = chgpostid.replace("/","")
         document.getElementById("showimg").style.display = "flex"
+        // here i have use manual link instead of django djnamic url because it is giving error of js variable , another way of making 
         document.getElementById("showimg").innerHTML =  `
         <div style="background-color: white;height: 45vw;width: 65vw;">
 
@@ -85,7 +100,7 @@
 
         <div class="d-flex justify-content-end" style="margin-top: .3vw;">
           <button class="btn btn-warning" style="margin-right: .5vw;" onclick=hidepost() >Cancle</button>
-          <a href="{url 'deletepost' ${postid}}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
+          <a href="http://127.0.0.1:8000/deletepost/${chgpostid}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
         </div>
 
         </div>
