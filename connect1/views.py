@@ -139,10 +139,9 @@ def posts(request):
             if len(request.FILES['addimage']) !=0:
                 user.toaddpost = request.FILES['addimage']
                 user.save()
-                if user.posts == None:
-                    user.posts = [user.toaddpost]
-                else:
-                    user.posts.append(str(user.toaddpost))
+                # user.posts = list(user.posts).append(str(user.toaddpost))
+                user.posts = [user.toaddpost.name]
+                user.save()
             # else:
             #     user.toaddpost = user.toaddpost
 
@@ -153,9 +152,11 @@ def posts(request):
             #     posts.append(toaddpost)
             # print(type(posts))
             # user.posts = ["hle",'la']
-            print(type(user.toaddpost))
-            print(user.posts)
-            user.save()
+            print(type(user.toaddpost.name))
+            print(user.toaddpost.name)
+            print(type(user.posts))
+
+            # user.save()
             # u = userprofile(id=user.id,name=user.name,bio=user.bio,email=user.email,phoneno=user.phoneno,gender=user.gender,profile_pic=user.profile_pic,toaddpost=toaddpost,posts=posts)
             # u.save()
 
