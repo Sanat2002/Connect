@@ -141,6 +141,15 @@ def posts(request):
         return render(request,'posts.html',{"posts":posts})
     return HttpResponseRedirect("/login")
 
+def deletepost(request,postid):
+    if request.user.is_authenticated:
+        user = userprofile.objects.get(name=request.user)
+        lst = user.posts
+        lst.remove(postid)
+        user.posts = lst
+        user.save()
+        return HttpResponseRedirect("/posts")
+    return HttpResponseRedirect("/")
 
 def userlogout(request):
     logout(request)

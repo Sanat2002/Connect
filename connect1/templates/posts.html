@@ -62,7 +62,7 @@
         <div class="allposts">
 
           {% for post in posts %}
-            <img src="{{post}}" alt="Error in loading post" style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;">
+            <img src="{{post}}" id="{{post}}" onclick=showpost(this.id) alt="Error in loading post!!!" style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;">
           {% endfor %}
 
         </div>
@@ -72,21 +72,28 @@
     </div>
 
     <!-- here i have used bootstrap classes but when i apply js this give some problem so i gave my custom class with same bootstrap style -->
-    <div class="showimg">
-      <div style="background-color: white;height: 35vw;width: 60vw;">
-
-        <img src="" alt="" style="width: 60vw;height: 32vw;">
-
-        <div class="d-flex justify-content-end" style="margin-top: .3vw;">
-          <button class="btn btn-warning" style="margin-right: .5vw;">Cancle</button>
-          <button class="btn btn-danger" style="margin-right: .3vw;">Delete</button>
-        </div>
-
-      </div>
+    <div class="showimg" id="showimg">
     </div>
 
     <script>
-      document.getElementsByClassName("showimg")[0].addEventListener('click')
+      function showpost(postid){
+        document.getElementById("showimg").style.display = "flex"
+        document.getElementById("showimg").innerHTML =  `
+        <div style="background-color: white;height: 45vw;width: 65vw;">
+
+        <img src="${postid}" alt="Error in loading post!!!" style="width: 65vw;height: 42vw;">
+
+        <div class="d-flex justify-content-end" style="margin-top: .3vw;">
+          <button class="btn btn-warning" style="margin-right: .5vw;" onclick=hidepost() >Cancle</button>
+          <a href="{url 'deletepost' ${postid}}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
+        </div>
+
+        </div>
+        `
+      }
+      function hidepost(){
+        document.getElementById("showimg").style.display = "none"
+      }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
