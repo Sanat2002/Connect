@@ -41,6 +41,17 @@
       .peopstories::-webkit-scrollbar{
         display: none;
       }
+      .cnreq{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(144, 160, 144);
+        height: 26vw;
+        margin-top: 1vw;
+        overflow: scroll;
+      }
+      .cnreq::-webkit-scrollbar{
+        display: none;
+      }
       .cnreqname{
         height: 4.5vw;
         overflow: scroll;
@@ -74,9 +85,12 @@
         <div style="margin-top: 1vw; font-size: 2.5vw;" >{{user.name}}</div>
         <div style="font-size: 1.5vw;">{{user.email}}</div>
         <div style="font-size: 1vw;">{{user.bio}}</div>
-        <div class="d-flex flex-column" style="border: 1px solid red;height: 20vw;margin-top: 1vw;">
 
-          <div class="d-flex flex-column" style="border: 1px solid black;margin: .2vw">
+        <div class="cnreq">
+
+          <div style="text-align: center;font-size: 2vw;font-weight: bolder;color: rgb(24, 177, 24);text-decoration: underline;">Connection Requests</div>
+
+          <div class="d-flex flex-column" style="margin: .2vw">
 
             <div class="d-flex" style="height:7vw;padding: .3vw;">
               <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
@@ -87,13 +101,12 @@
               </div>
             </div>
 
-            <div class="d-flex justify-content-end">
+            <div style="text-align: end;">
               <a href=""><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
               <a href=""><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
             </div>
 
           </div>
-
         </div>
       </div>
 
