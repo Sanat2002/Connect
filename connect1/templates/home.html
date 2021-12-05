@@ -148,8 +148,8 @@
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
             </div>
             {% endif %}
-            <div class="text-center">{{users.name}}</div>
-            <div class="text-center btn btn-success" style="font-size: 1vw;">Connect</div>
+            <div class="text-center" style="font-size: 1.3vw;font-weight: bold;">{{users.name}}</div>
+            <a href="{% url 'sendconnectionreq' users.name %}"><button class="btn btn-success" style="width: 7.9vw;">Connect</button></a>
           </div>
           {% endfor %}
 
@@ -171,26 +171,8 @@
           <div style="margin-left: .2vw;">
             Like
           </div>
-
         </div>
         {% endfor %}
-        {% comment %} <div style="border: 1px solid greenyellow; margin: .5vw;">
-
-          <div class="d-flex">
-            <div style="height: 3vw;width: 3vw;background-color: black;border-radius: 10vw;margin: .1vw;"></div>
-            <div style="margin-left: 1vw;">Sia</div>
-          </div>
-
-          <div style="border: .2px solid black;"></div>
-
-          <div style="height: 30vw;margin:.2vw 0vw; background-color: black;"></div>
-
-          <div style="margin-left: .2vw;">
-            Like
-          </div>
-
-        </div> {% endcomment %}
-
       </div>
 
     </div>

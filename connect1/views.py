@@ -155,6 +155,19 @@ def deletepost(request,postid):
         return HttpResponseRedirect("/posts")
     return HttpResponseRedirect("/")
 
+def sendconnectionreq(request,name):
+    user = userprofile.objects.get(name=request.user)
+    reqsendtouser = userprofile.objects.get(name=name)
+    if type(reqsendtouser.connectionrequests) == list:
+        lst = list(reqsendtouser.connectionrequests)
+        lst.append(user.name)
+        reqsendtouser.connectionrequests = lst
+    else:
+        reqsendtouser.connectionrequests = [user.name]
+    
+    reqsendtouser.save()
+    return HttpResponseRedirect("/home")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
