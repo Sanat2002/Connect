@@ -181,6 +181,10 @@ def acceptconnectionreq(request,name):
     user = userprofile.objects.get(name=request.user)
     reqsenduser = userprofile.objects.get(name=name)
 
+    lst1 = list(user.connectionrequests)
+    lst1.remove(name)
+    user.connectionrequests = lst1
+
     if type(user.connections) == list:
         lst = list(user.connections)
         lst.append(reqsenduser.name)
@@ -197,6 +201,16 @@ def acceptconnectionreq(request,name):
     
     user.save()
     reqsenduser.save()
+    return HttpResponseRedirect("/home")
+
+def rejectconnectionreq(request,name):
+    user = userprofile.objects.get(name=request.user)
+
+    lst = list(user.connectionrequests)
+    lst.remove(name)
+    user.connectionrequests = lst
+
+    user.save()
     return HttpResponseRedirect("/home")
 
 def userlogout(request):
