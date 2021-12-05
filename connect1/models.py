@@ -26,6 +26,8 @@ class userprofile(models.Model):
     gender = models.CharField(blank=True,max_length=10)
     toaddpost = models.ImageField(upload_to=filepath,blank=True,null=True)
     posts = models.JSONField(default=dict) # user jsonField in order to store lists,map,dict
+    connections = models.JSONField(default=dict)
+    connectionrequests = models.JSONField(default=dict)
 
     def __str__(self):
         return self.name
