@@ -41,6 +41,22 @@
       .peopstories::-webkit-scrollbar{
         display: none;
       }
+      .cnreqname{
+        height: 4.5vw;
+        overflow: scroll;
+        font-size: 1.5vw;
+        font-weight: bolder;
+      }
+      .cnreqname::-webkit-scrollbar{
+        display: none;
+      }
+      .cnreqbio{
+        height: 9vw;
+        overflow: scroll;
+      }
+      .cnreqbio::-webkit-scrollbar{
+        display: none;
+      }
     </style>
 
   </head>
@@ -58,6 +74,27 @@
         <div style="margin-top: 1vw; font-size: 2.5vw;" >{{user.name}}</div>
         <div style="font-size: 1.5vw;">{{user.email}}</div>
         <div style="font-size: 1vw;">{{user.bio}}</div>
+        <div class="d-flex flex-column" style="border: 1px solid red;height: 20vw;margin-top: 1vw;">
+
+          <div class="d-flex flex-column" style="border: 1px solid black;margin: .2vw">
+
+            <div class="d-flex" style="height:7vw;padding: .3vw;">
+              <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
+
+              <div class="d-flex flex-column" style="margin-left: 1.5vw;width: 22vw;">
+              <div class="cnreqname">Sanat Thakur</div>
+              <div class="cnreqbio">Sanat Thakur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum obcaecati harum dignissimos officia cumque, tempora aperiam itaque maxime, ipsum sunt repudiandae repellendus. Labore numquam quod corporis rerum error voluptatem aperiam?</div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <a href=""><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
+              <a href=""><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
+            </div>
+
+          </div>
+
+        </div>
       </div>
 
       <div style="border: 2px solid black;width: 50vw; margin-left: 1vw;margin-top: 1vw;">
