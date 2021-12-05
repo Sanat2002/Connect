@@ -10,6 +10,8 @@ import uuid
 from django.core.mail import send_mail
 from django.conf import settings
 
+# make pendingconnection field and store the name of users to whom req is send(and till not accepted)
+
 # if in case in mongodb the document 'id'(it is not a object '_id'(default)) does not exist then , delete the whole data base and create new one 
 # here 'id' is 1,2,3 not object id which is default see Blogapp documents
 
@@ -86,6 +88,10 @@ def home(request):
 
         usersuggestions = list(userprofile.objects.all())
         usersuggestions.remove(user)
+        if user.connections:
+            for connection in user.connections:
+                u = userprofile.objects.get(name=connection)
+                usersuggestions.remove(u)
 
         return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests})
     return HttpResponseRedirect("/")
@@ -165,6 +171,9 @@ def deletepost(request,postid):
     return HttpResponseRedirect("/")
 
 def sendconnectionreq(request,name):
+
+    # add reqsendtouser in pendingconnections field
+
     user = userprofile.objects.get(name=request.user)
     reqsendtouser = userprofile.objects.get(name=name)
     if type(reqsendtouser.connectionrequests) == list:
