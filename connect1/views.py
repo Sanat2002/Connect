@@ -76,9 +76,18 @@ def home(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
         userposts = user.posts
+
+        # changing the name store in db to its objects
+        connectionrequests = []
+        if user.connectionrequests:
+            for req in user.connectionrequests:
+                u = userprofile.objects.get(name=req)
+                connectionrequests.append(u)
+
         usersuggestions = list(userprofile.objects.all())
         usersuggestions.remove(user)
-        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts})
+
+        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests})
     return HttpResponseRedirect("/")
 
 def profile(request):

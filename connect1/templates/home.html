@@ -86,29 +86,35 @@
         <div style="font-size: 1.5vw;">{{user.email}}</div>
         <div style="font-size: 1vw;">{{user.bio}}</div>
 
+        {% if connectionrequests %}
         <div class="cnreq">
 
           <div style="text-align: center;font-size: 2vw;font-weight: bolder;color: rgb(24, 177, 24);text-decoration: underline;">Connection Requests</div>
 
-          <div class="d-flex flex-column" style="margin: .2vw">
+          {% for requests in connectionrequests %}
+            <div class="d-flex flex-column" style="margin: .2vw">
 
-            <div class="d-flex" style="height:7vw;padding: .3vw;">
-              <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
-
-              <div class="d-flex flex-column" style="margin-left: 1.5vw;width: 22vw;">
-              <div class="cnreqname">Sanat Thakur</div>
-              <div class="cnreqbio">Sanat Thakur Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum obcaecati harum dignissimos officia cumque, tempora aperiam itaque maxime, ipsum sunt repudiandae repellendus. Labore numquam quod corporis rerum error voluptatem aperiam?</div>
+              <div class="d-flex" style="height:7vw;padding: .3vw;">
+                {% if requests.profile_pic %}
+                <img src="{{requests.profile_pic.url}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+                {% else %}
+                <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
+                {% endif %}
+                <div class="d-flex flex-column" style="margin-left: 1.5vw;width: 22vw;">
+                <div class="cnreqname">{{requests.name}}</div>
+                <div class="cnreqbio">{{requests.bio}}</div>
+                </div>
               </div>
-            </div>
 
-            <div style="text-align: end;">
-              <a href=""><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
-              <a href=""><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
-            </div>
+              <div style="text-align: end;">
+                <a href=""><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
+                <a href=""><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
+              </div>
 
-          </div>
-          
+            </div>
+          {% endfor %}
         </div>
+        {% endif %}
       </div>
 
       <div style="border: 2px solid black;width: 50vw; margin-left: 1vw;margin-top: 1vw;">
