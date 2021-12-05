@@ -62,7 +62,9 @@
         <div class="allposts">
 
           {% for post in posts %}
-            <img src="{{post}}" id="{{post}}" onclick=showpost(this.id) alt="Error in loading post!!!" style="background-color: black;height: 30vw;width: 37.4vw;margin: .5vw; cursor: pointer;">
+          <div class="d-flex justify-content-center" style="height:32vw;width:37.4vw;background-color: black;">
+            <img src="{{post}}" id="{{post}}" onclick=showpost(this.id) alt="Error in loading post!!!" style="height: 30vw;margin: .5vw; cursor: pointer;">
+          </div>
           {% endfor %}
 
         </div>
@@ -73,18 +75,6 @@
 
     <!-- here i have used bootstrap classes but when i apply js this give some problem so i gave my custom class with same bootstrap style -->
     <div class="showimg" id="showimg">
-      {% comment %} {% for post in posts %}
-      <div style="background-color: white;height: 45vw;width: 65vw;">
-
-        <img src="{{post}}" alt="Error in loading post!!!" style="width: 65vw;height: 42vw;">
-
-        <div class="d-flex justify-content-end" style="margin-top: .3vw;">
-          <button class="btn btn-warning" style="margin-right: .5vw;" onclick=hidepost() >Cancle</button>
-          <a href="{% url 'deletepost' post %}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
-        </div>
-
-        </div>
-      {% endfor %} {% endcomment %}
     </div>
 
     <script>

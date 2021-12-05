@@ -104,23 +104,26 @@
 
         </div>
 
+        {% for userpost in userposts %}
         <div style="border: 1px solid greenyellow; margin: .5vw;">
 
           <div class="d-flex">
-            <div style="height: 3vw;width: 3vw;background-color: black;border-radius: 10vw;margin: .1vw;"></div>
-            <div style="margin-left: 1vw;">Sanat Thakur</div>
+            <img src="{{user.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
+            <div style="margin-left: 1vw;">{{user.name}}</div>
           </div>
 
           <div style="border: .2px solid black;"></div>
 
-          <div style="height: 30vw;margin:.2vw 0vw; background-color: black;"></div>
-
+          <div class="d-flex justify-content-center" style="background-color: rgb(219 219 219);"> 
+          <img src="{{userpost}}" alt="Error!!!" style="height: 30vw;width: auto; margin: .2vw 0;">
+          </div>
           <div style="margin-left: .2vw;">
             Like
           </div>
 
         </div>
-        <div style="border: 1px solid greenyellow; margin: .5vw;">
+        {% endfor %}
+        {% comment %} <div style="border: 1px solid greenyellow; margin: .5vw;">
 
           <div class="d-flex">
             <div style="height: 3vw;width: 3vw;background-color: black;border-radius: 10vw;margin: .1vw;"></div>
@@ -135,7 +138,7 @@
             Like
           </div>
 
-        </div>
+        </div> {% endcomment %}
 
       </div>
 

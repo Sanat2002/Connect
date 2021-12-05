@@ -75,9 +75,10 @@ def login(request):
 def home(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
+        userposts = user.posts
         usersuggestions = list(userprofile.objects.all())
         usersuggestions.remove(user)
-        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions})
+        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts})
     return HttpResponseRedirect("/")
 
 def profile(request):
