@@ -62,8 +62,8 @@
         <div class="allposts">
 
           {% for post in posts %}
-          <div class="d-flex justify-content-center" style="height:32vw;width:37.4vw;background-color: black;">
-            <img src="{{post}}" id="{{post}}" onclick=showpost(this.id) alt="Error in loading post!!!" style="height: 30vw;margin: .5vw; cursor: pointer;">
+          <div class="d-flex justify-content-center" id="{{post}}" onclick=showpost(this.id) style="height:30vw;width:37.4vw;background-color: rgb(219 219 219);margin: .5vw; cursor: pointer;">
+            <img src="{{post}}"  alt="Error in loading post!!!" style="height: 30vw;">
           </div>
           {% endfor %}
 
@@ -86,8 +86,9 @@
         document.getElementById("showimg").innerHTML =  `
         <div style="background-color: white;height: 45vw;width: 65vw;">
 
-        <img src="${postid}" alt="Error in loading post!!!" style="width: 65vw;height: 42vw;">
-
+        <div class="d-flex justify-content-center" style="background-color: rgb(219 219 219)">
+        <img src="${postid}" alt="Error in loading post!!!" style="height: 42vw;">
+        </div>
         <div class="d-flex justify-content-end" style="margin-top: .3vw;">
           <button class="btn btn-warning" style="margin-right: .5vw;" onclick=hidepost() >Cancle</button>
           <a href="http://127.0.0.1:8000/deletepost/${chgpostid}"><button class="btn btn-danger" style="margin-right: .3vw;" >Delete</button></a>
