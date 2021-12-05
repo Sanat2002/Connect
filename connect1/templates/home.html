@@ -107,8 +107,8 @@
               </div>
 
               <div style="text-align: end;">
-                <a href=""><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
-                <a href=""><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
+                <a href="{% url 'rejectconnectionreq' requests.name %}"><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Reject</button></a>
+                <a href="{% url 'acceptconnectionreq' requests.name %}"><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Accept</button></a>
               </div>
 
             </div>

@@ -10,5 +10,7 @@ urlpatterns = [
     path('posts',views.posts,name="posts"),
     path('deletepost/<postid>',views.deletepost,name="deletepost"),
     path('sendconnectionreq/<name>',views.sendconnectionreq,name="sendconnectionreq"),
+    path('acceptconnectionreq/<name>',views.acceptconnectionreq,name="acceptconnectionreq"),
+    path('rejectconnectionreq/<name>',views.rejectconnectionreq,name="rejectconnectionreq"),
     path('logout',views.userlogout,name="logout"),
 ]

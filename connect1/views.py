@@ -177,6 +177,28 @@ def sendconnectionreq(request,name):
     reqsendtouser.save()
     return HttpResponseRedirect("/home")
 
+def acceptconnectionreq(request,name):
+    user = userprofile.objects.get(name=request.user)
+    reqsenduser = userprofile.objects.get(name=name)
+
+    if type(user.connections) == list:
+        lst = list(user.connections)
+        lst.append(reqsenduser.name)
+        user.connections = lst
+    else:
+        user.connections = [reqsenduser.name]
+    
+    if type(reqsenduser.connections) == list:
+        lst = list(reqsenduser.connections)
+        lst.append(user.name)
+        reqsenduser.connections = lst
+    else:
+        reqsenduser.connections = [user.name]
+    
+    user.save()
+    reqsenduser.save()
+    return HttpResponseRedirect("/home")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
