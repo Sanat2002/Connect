@@ -28,6 +28,7 @@ class userprofile(models.Model):
     posts = models.JSONField(default=dict) # user jsonField in order to store lists,map,dict
     connections = models.JSONField(default=dict)
     connectionrequests = models.JSONField(default=dict)
+    pendingconnections = models.JSONField(default=dict)
 
     def __str__(self):
         return self.name
