@@ -204,6 +204,10 @@ def acceptconnectionreq(request,name):
     lst1.remove(name)
     user.connectionrequests = lst1
 
+    lst2 = list(reqsenduser.pendingconnections)
+    lst2.remove(user.name)
+    reqsenduser.pendingconnections = lst2
+
     if type(user.connections) == list:
         lst = list(user.connections)
         lst.append(reqsenduser.name)
