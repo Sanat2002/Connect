@@ -73,6 +73,10 @@
   </head>
   <body>
 
+    <!-- <div style="position: absolute;background-color: rgb(0,0,0,.7);top: 0;left: 0;right: 0;bottom: 0;">
+
+    </div> -->
+
     <div class="d-flex">
 
       <div style="margin-left: 2vw;margin-top: 1vw;width:30vw;">
@@ -88,21 +92,19 @@
 
         <div class="d-flex justify-content-between" style="">
 
-          <div style="">
+          <a href="/posts" style="text-decoration: none;color: black;"><div>
             <div style="text-align: center;font-size: 2vw;">2</div>
-            <div style="font-weight: bolder;font-size: 1.2vw;">Posts</div>
-          </div>
-
-          <div style="">
+            <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</div>
+            </div>
+          </a>
+          <div onclick="topreventscroll()" style="cursor: pointer;">
             <div style="text-align: center;font-size: 2vw;">1</div>
-            <div style="font-weight: bolder;font-size: 1.2vw;">Connections</div>
+            <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Connections</div>
           </div>
-
-          <div style="">
+          <div onclick="toscroll()" style="cursor: pointer;">
             <div style="text-align: center;font-size: 2vw;">0</div>
-            <div style="font-weight: bolder;font-size: 1.2vw;">Pending Connections</div>
+            <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Pending Connections</div>
           </div>
-
         </div>
 
         {% if connectionrequests %}
@@ -225,19 +227,19 @@
       </div>
       </a>
 
-      <a href="/changepassword" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw; cursor: pointer;">
+      <a href="/changepassword" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;">
         <img src="https://img.icons8.com/ios-glyphs/30/000000/password1.png" alt="" style="margin-top: .3vw;margin-left: .5vw;" height="37vw" />
         <div class="text-center text-white" style="font-size: 1.2vw;margin-top: .5vw;width: 20vw;">Change Password</div>
       </div>
       </a> 
 
-      <a href="/posts" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw; cursor: pointer;">
+      <a href="/posts" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;">
         <img src="https://img.icons8.com/pastel-glyph/64/000000/image--v1.png" alt="" style="margin-top: .3vw;margin-left: .5vw;" height="37vw"/>
         <div class="text-center text-white" style="font-size: 1.2vw;margin-top: .5vw;width: 20vw;">My Posts</div>
       </div>
       </a> 
 
-      <a href="/logout" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw; cursor: pointer;">
+      <a href="/logout" style="text-decoration: none;color: white;"><div class="d-flex" style="background-color: rgb(145, 148, 150);height: 3vw;width: 17.9vw;margin: 1vw 1vw;">
         <img src="https://img.icons8.com/external-sbts2018-mixed-sbts2018/58/000000/external-logout-social-media-basic-1-sbts2018-mixed-sbts2018.png" alt="" style="margin-top: .3vw;margin-left: .5vw;" height="33vw"/>
         <div class="text-center text-white" style="font-size: 1.2vw;margin-top: .5vw;width: 20vw;">Logout</div>
         </div>
@@ -246,6 +248,16 @@
 
 
     <script>
+
+      // this is how we can prevent windows to scroll
+      function topreventscroll(){
+        window.onscroll = () =>  window.scroll(0, 0);
+      }
+      
+      function toscroll(){
+        window.onscroll = () => window.scroll();
+      }
+
       document.getElementById("show").addEventListener('click',(e)=>{
         var s = document.getElementById("sidebar");
         s.style.left = 0
