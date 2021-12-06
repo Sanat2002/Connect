@@ -78,14 +78,7 @@ def home(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
         userposts = user.posts
-
-        # changing the name store in db to its objects
-        connectionrequests = []
-        if user.connectionrequests:
-            for req in user.connectionrequests:
-                u = userprofile.objects.get(name=req)
-                connectionrequests.append(u)
-
+        
         usersuggestions = list(userprofile.objects.all())
         usersuggestions.remove(user)
         if user.connections:
@@ -97,6 +90,14 @@ def home(request):
             for connection in user.pendingconnections:
                 u = userprofile.objects.get(name=connection)
                 usersuggestions.remove(u)
+
+        # changing the name store in db to its objects
+        connectionrequests = []
+        if user.connectionrequests:
+            for req in user.connectionrequests:
+                u = userprofile.objects.get(name=req)
+                connectionrequests.append(u)
+                usersuggestions.remove(u) # also removing from usersuggestions
 
         return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests})
     return HttpResponseRedirect("/")
@@ -184,7 +185,7 @@ def sendconnectionreq(request,name):
         lst.append(reqsendtouser.name)
         user.pendingconnections = lst
     else:
-        user.pendingconnections = [user.name]
+        user.pendingconnections = [reqsendtouser.name]
 
     if type(reqsendtouser.connectionrequests) == list:
         lst = list(reqsendtouser.connectionrequests)
@@ -193,6 +194,7 @@ def sendconnectionreq(request,name):
     else:
         reqsendtouser.connectionrequests = [user.name]
     
+    user.save()
     reqsendtouser.save()
     return HttpResponseRedirect("/home")
 
