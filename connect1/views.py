@@ -228,12 +228,18 @@ def acceptconnectionreq(request,name):
 
 def rejectconnectionreq(request,name):
     user = userprofile.objects.get(name=request.user)
+    reqsenduser = userprofile.objects.get(name=name)
 
     lst = list(user.connectionrequests)
     lst.remove(name)
     user.connectionrequests = lst
 
+    lst1 = list(reqsenduser.pendingconnections)
+    lst1.remove(user.name)
+    reqsenduser.pendingconnections = lst1
+
     user.save()
+    reqsenduser.save()
     return HttpResponseRedirect("/home")
 
 def userlogout(request):
