@@ -92,6 +92,11 @@ def home(request):
             for connection in user.connections:
                 u = userprofile.objects.get(name=connection)
                 usersuggestions.remove(u)
+        
+        if user.pendingconnections:
+            for connection in user.pendingconnections:
+                u = userprofile.objects.get(name=connection)
+                usersuggestions.remove(u)
 
         return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests})
     return HttpResponseRedirect("/")
@@ -171,11 +176,16 @@ def deletepost(request,postid):
     return HttpResponseRedirect("/")
 
 def sendconnectionreq(request,name):
-
-    # add reqsendtouser in pendingconnections field
-
     user = userprofile.objects.get(name=request.user)
     reqsendtouser = userprofile.objects.get(name=name)
+
+    if type(user.pendingconnections) == list:
+        lst = list(user.pendingconnections)
+        lst.append(reqsendtouser.name)
+        user.pendingconnections = lst
+    else:
+        user.pendingconnections = [user.name]
+
     if type(reqsendtouser.connectionrequests) == list:
         lst = list(reqsendtouser.connectionrequests)
         lst.append(user.name)
