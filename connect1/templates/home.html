@@ -245,8 +245,20 @@
     </div>
 
     
-    <div style="position: absolute;background-color: rgb(0,0,0,.7); top: 0;height: 100%;width: 100%;">
-      
+    <div class="d-flex justify-content-center align-items-center" style="position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
+      <div style="background-color: white; height: 40vw;width: 40vw;border-radius: .3vw;">
+
+        <div style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
+        
+        <div>
+          <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;" placeholder="Search">
+        </div>
+
+        <div style="border: .5px solid black;margin: .8vw 1vw;"></div>
+
+        <div style="border: 1px solid black;height: 31.8vw;padding: .2vw 1vw;"></div>
+
+      </div>
     </div>
 
     <script>
@@ -257,7 +269,6 @@
       
       function toscroll(){
         window.onscroll = () => window.scroll();
-        console.log("helo")
       }
 
       document.getElementById("show").addEventListener('click',(e)=>{
