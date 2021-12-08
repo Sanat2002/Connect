@@ -99,7 +99,12 @@ def home(request):
                 connectionrequests.append(u)
                 usersuggestions.remove(u) # also removing from usersuggestions
 
-        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests})
+        # calculating no of posts,conn,pendconn
+        noofposts = len(user.posts)
+        noofconnections = len(user.connections)
+        noofpendingconnections = len(user.pendingconnections)
+
+        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections})
     return HttpResponseRedirect("/")
 
 def profile(request):

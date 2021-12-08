@@ -127,18 +127,18 @@
         <div class="d-flex justify-content-between">
 
           <a href="/posts" style="text-decoration: none;color: black;"><div>
-            <div style="text-align: center;font-size: 2vw;color: rgb(69, 69, 238);">2</div>
+            <div style="text-align: center;font-size: 2vw;color: rgb(69, 69, 238);">{{noofposts}}</div>
             <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Posts</div>
             </div>
           </a>
 
           <div onclick="connections()" style="cursor: pointer;">
-            <div style="text-align: center;font-size: 2vw;color: rgb(50, 216, 50);">1</div>
+            <div style="text-align: center;font-size: 2vw;color: rgb(50, 216, 50);">{{noofconnections}}</div>
             <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Connections</div>
           </div>
 
           <div onclick="pendingconnections()" style="cursor: pointer;">
-            <div style="text-align: center;font-size: 2vw;color: rgb(148, 148, 144);">0</div>
+            <div style="text-align: center;font-size: 2vw;color: rgb(148, 148, 144);">{{noofpendingconnections}}</div>
             <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Pending Connections</div>
           </div>
         </div>
@@ -312,7 +312,7 @@
     </div>
 
 
-    <div id="pendingconnections" style="display: flex;justify-content: center;align-items: center; position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
+    <div id="pendingconnections" style="display: none;justify-content: center;align-items: center; position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
       <div style="background-color: white; height: 40vw;width: 40vw;border-radius: .3vw;">
 
         <div onclick="hidependingconnections()" style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
