@@ -87,6 +87,25 @@
       .cnname::-webkit-scrollbar{
         display: none;
       }
+      .pendcncontainer{
+        height: 31.8vw;
+        overflow: scroll;
+      }
+      .pendcncontainer::-webkit-scrollbar{
+        display: none;
+      }
+      .pendcnname{
+        margin-left: 1.3vw;
+        font-size: 1.3vw;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-top: 1.4vw;
+        width: 20vw;
+        height: 3vw;
+        overflow: scroll;
+      }
+      .pendcnname::-webkit-scrollbar{
+        display: none;
+      }
     </style>
 
   </head>
@@ -113,12 +132,12 @@
             </div>
           </a>
 
-          <div onclick="topreventscroll()" style="cursor: pointer;">
+          <div onclick="connections()" style="cursor: pointer;">
             <div style="text-align: center;font-size: 2vw;color: rgb(50, 216, 50);">1</div>
             <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Connections</div>
           </div>
 
-          <div onclick="toscroll()" style="cursor: pointer;">
+          <div onclick="pendingconnections()" style="cursor: pointer;">
             <div style="text-align: center;font-size: 2vw;color: rgb(148, 148, 144);">0</div>
             <div style="font-weight: bolder;font-size: 1.2vw;font-family: Verdana, Geneva, Tahoma, sans-serif;">Pending Connections</div>
           </div>
@@ -264,10 +283,10 @@
     </div>
 
     
-    <div class="d-flex justify-content-center align-items-center" style="position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
+    <div id="connections" style="display: none;justify-content: center;align-items: center; position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
       <div style="background-color: white; height: 40vw;width: 40vw;border-radius: .3vw;">
 
-        <div style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
+        <div onclick="hideconnections()" style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
         
         <div>
           <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;height: 2.3vw;font-size: 1.2vw;" placeholder="Search">
@@ -277,7 +296,7 @@
 
         <div class="cncontainer">
 
-          <div class="d-flex" style="border: 1px solid green;height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
+          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
 
             <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
 
@@ -287,13 +306,32 @@
 
           </div>
 
-          <div class="d-flex" style="border: 1px solid green;height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
+        </div>
+
+      </div>
+    </div>
+
+
+    <div id="pendingconnections" style="display: flex;justify-content: center;align-items: center; position: absolute;background-color: rgb(0,0,0,.8); top: 0;height: 100%;width: 100%;">
+      <div style="background-color: white; height: 40vw;width: 40vw;border-radius: .3vw;">
+
+        <div onclick="hidependingconnections()" style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
+        
+        <div>
+          <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;height: 2.3vw;font-size: 1.2vw;" placeholder="Search">
+        </div>
+
+        <div style="border: .5px solid black;margin: .8vw 1vw;"></div>
+
+        <div class="pendcncontainer">
+
+          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
 
             <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
 
-            <div class="cnname">Sanat Thakur</div>
+            <div class="pendcnname">Sanat Thakur</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 2vw;">Break Connection</button></a>
+            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 7vw;">Delete</button></a>
 
           </div>
 
@@ -312,6 +350,32 @@
         window.onscroll = () => window.scroll();
       }
 
+
+      // connections
+      function connections(){
+        topreventscroll()
+        document.getElementById("connections").style.display = "flex"
+      }
+
+      function hideconnections(){
+        toscroll()
+        document.getElementById("connections").style.display = "none"
+      }
+
+
+      // pendingconnections
+      function pendingconnections(){
+        topreventscroll()
+        document.getElementById("pendingconnections").style.display = "flex"
+      }
+
+      function hidependingconnections(){
+        toscroll()
+        document.getElementById("pendingconnections").style.display = "none"
+      }
+
+
+      // sideBar
       document.getElementById("show").addEventListener('click',(e)=>{
         var s = document.getElementById("sidebar");
         s.style.left = 0
@@ -321,6 +385,8 @@
         s.style.left = "-20vw"
       })
 
+
+      // suggestions
       document.getElementById("suggbtn").addEventListener('click',(e)=>{
         var s = document.getElementById("sugg")
         if(s.style.display=="none"){
