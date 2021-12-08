@@ -68,6 +68,13 @@
       .cnreqbio::-webkit-scrollbar{
         display: none;
       }
+      .cncontainer{
+        height: 31.8vw;
+        overflow: scroll;
+      }
+      .cncontainer::-webkit-scrollbar{
+        display: none;
+      }
       .cnname{
         margin-left: 1.3vw;
         font-size: 1.3vw;
@@ -263,12 +270,12 @@
         <div style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
         
         <div>
-          <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;" placeholder="Search">
+          <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;height: 2.3vw;font-size: 1.2vw;" placeholder="Search">
         </div>
 
         <div style="border: .5px solid black;margin: .8vw 1vw;"></div>
 
-        <div style="border: 1px solid black;height: 31.8vw;">
+        <div class="cncontainer">
 
           <div class="d-flex" style="border: 1px solid green;height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
 
@@ -276,7 +283,17 @@
 
             <div class="cnname">Sanat Thakur</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.2vw;margin-left: 2vw;">Break Connection</button></a>
+            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 2vw;">Break Connection</button></a>
+
+          </div>
+
+          <div class="d-flex" style="border: 1px solid green;height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
+
+            <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
+
+            <div class="cnname">Sanat Thakur</div>
+
+            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 2vw;">Break Connection</button></a>
 
           </div>
 
