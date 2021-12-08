@@ -81,14 +81,19 @@ def home(request):
         
         usersuggestions = list(userprofile.objects.all())
         usersuggestions.remove(user)
+        
+        connections = []
+        pendingconnections = []
         if user.connections:
             for connection in user.connections:
                 u = userprofile.objects.get(name=connection)
+                connections.append(u)
                 usersuggestions.remove(u)
         
         if user.pendingconnections:
             for connection in user.pendingconnections:
                 u = userprofile.objects.get(name=connection)
+                pendingconnections.append(u)
                 usersuggestions.remove(u)
 
         # changing the name store in db to its objects
@@ -104,7 +109,7 @@ def home(request):
         noofconnections = len(user.connections)
         noofpendingconnections = len(user.pendingconnections)
 
-        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections})
+        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections,"connections":connections,"pendingconnections":pendingconnections})
     return HttpResponseRedirect("/")
 
 def profile(request):

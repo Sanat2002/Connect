@@ -296,16 +296,19 @@
 
         <div class="cncontainer">
 
+          {% for connection in connections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
-
+            {% if connection.profile_pic %}
+            <img src="{{connection.profile_pic}}" alt="" style="height:5vw;width:5vw;border-radius:10vw;">
+            {% else %}
             <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
-
-            <div class="cnname">Sanat Thakur</div>
+            {% endif %}
+            <div class="cnname">{{connection.name}}</div>
 
             <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 2vw;">Break Connection</button></a>
 
           </div>
-
+          {% endfor %}
         </div>
 
       </div>
@@ -325,16 +328,19 @@
 
         <div class="pendcncontainer">
 
+          {% for connection in pendingconnections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
-
+            {% if connection.profile_pic %}
+            <img src="{{connection.profile_pic}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+            {% else %}
             <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
-
-            <div class="pendcnname">Sanat Thakur</div>
+            {% endif %}
+            <div class="pendcnname">{{connection.name}}</div>
 
             <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 7vw;">Delete</button></a>
 
           </div>
-
+          {% endfor %}
         </div>
 
       </div>
