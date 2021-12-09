@@ -44,7 +44,7 @@
       .cnreq{
         display: flex;
         flex-direction: column;
-        border: 2px solid rgb(144, 160, 144);
+        border: 3px solid rgb(144, 160, 144);
         height: 23vw;
         margin-top: 1vw;
         overflow: scroll;
@@ -146,10 +146,30 @@
         {% if connectionrequests %}
         <div class="cnreq">
 
-          <div style="text-align: center;font-size: 2vw;font-weight: bolder;color: rgb(24, 177, 24);text-decoration: underline;">Connection Requests</div>
+          <div style="text-align: center;font-size: 2vw;font-weight: bolder;color: rgb(24, 177, 24);text-decoration: underline;margin-bottom:1vw;">Connection Requests</div>
 
           {% for requests in connectionrequests %}
-            <div class="d-flex flex-column" style="margin: .2vw">
+            <div class="d-flex flex-column" style="margin: .2vw;border-bottom: .5px solid rgb(104, 100, 100);">
+
+              <div class="d-flex" style="height:7vw;padding: .3vw;">
+                {% if requests.profile_pic %}
+                <img src="{{requests.profile_pic}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+                {% else %}
+                <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
+                {% endif %}
+                <div class="d-flex flex-column" style="margin-left: 1.5vw;width: 22vw;">
+                <div class="cnreqname">{{requests.name}}</div>
+                <div class="cnreqbio">{{requests.bio}}</div>
+                </div>
+              </div>
+
+              <div style="text-align: end;">
+                <a href="{% url 'rejectconnectionreq' requests.name %}"><button class="btn btn-danger" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Ignore</button></a>
+                <a href="{% url 'acceptconnectionreq' requests.name %}"><button class="btn btn-success" style="margin-right: .5vw;margin-bottom: .3vw;margin-top: .2vw;">Connect</button></a>
+              </div>
+
+            </div>
+            <div class="d-flex flex-column" style="margin: .2vw;border-bottom: .5px solid rgb(104, 100, 100);">
 
               <div class="d-flex" style="height:7vw;padding: .3vw;">
                 {% if requests.profile_pic %}

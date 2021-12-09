@@ -113,7 +113,6 @@ def home(request):
         connectionsposts = []
         for connection in connections:
             connectionsposts.append({"connection":connection,"posts":connection.posts})
-        print(connectionsposts)
 
         return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections,"connections":connections,"pendingconnections":pendingconnections,"connectionsposts":connectionsposts})
     return HttpResponseRedirect("/")
