@@ -375,6 +375,7 @@
 
           </div>
           {% endfor %}
+
         </div>
 
       </div>
@@ -414,6 +415,20 @@
         document.getElementById("pendingconnections").style.display = "none"
       }
 
+      document.getElementById("pendinp").addEventListener('input',(e)=>{
+        elems = document.getElementsByClassName("pendcnname")
+        for(var i of elems){
+          if(i.innerHTML.includes(e.data)){
+            console.log("SSLSL")
+            i.parentNode.classList.remove("d-none")
+            i.parentNode.classList += " d-flex"
+          }
+          else{
+            console.log("slsl")
+            i.parentNode.classList += " d-none"
+          }
+        }
+      })
 
       // sideBar
       document.getElementById("show").addEventListener('click',(e)=>{
