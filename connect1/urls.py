@@ -13,5 +13,6 @@ urlpatterns = [
     path('acceptconnectionreq/<name>',views.acceptconnectionreq,name="acceptconnectionreq"),
     path('rejectconnectionreq/<name>',views.rejectconnectionreq,name="rejectconnectionreq"),
     path('breakconnection/<name>',views.breakconnection,name="breakconnection"),
+    path('deletependingconnection/<name>',views.deletependingconnection,name="deletependingconnection"),
     path('logout',views.userlogout,name="logout"),
 ]

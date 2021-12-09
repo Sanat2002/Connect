@@ -270,6 +270,13 @@ def breakconnection(request,name):
     seuser.save()
     return HttpResponseRedirect("/home")
 
+def deletependingconnection(request,name):
+    user = userprofile.objects.get(name=request.user)
+    seuser = userprofile.objects.get(name=name)
+
+    
+    return HttpResponseRedirect("/home")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
