@@ -218,6 +218,28 @@
 
         </div>
 
+        {% for connection in connectionsposts %}
+        {% for posts in connection %}   
+        <div style="border: 1px solid greenyellow; margin: .5vw;">
+          
+          <div class="d-flex">
+            <img src="{{user.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
+            <div style="margin-left: 1vw;">{{user.name}}</div>
+          </div>
+
+          <div style="border: .2px solid black;"></div>
+
+          <div class="d-flex justify-content-center" style="background-color: rgb(219 219 219);"> 
+          <img src="{{userpost}}" alt="Error!!!" style="height: 30vw;margin: .2vw 0;">
+          </div>
+          <div style="margin-left: .2vw;">
+            Like
+          </div>
+
+        </div>
+        {% endfor %}
+        {% endfor %}
+
         {% for userpost in userposts %}
         <div style="border: 1px solid greenyellow; margin: .5vw;">
 
@@ -307,9 +329,9 @@
             <div class="cnname">{{connection.name}}</div>
 
             <a href="{% url 'breakconnection' connection.name %}"><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 1vw;">Break Connection</button></a>
-
           </div>
           {% endfor %}
+
         </div>
 
       </div>
