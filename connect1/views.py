@@ -254,6 +254,22 @@ def rejectconnectionreq(request,name):
     reqsenduser.save()
     return HttpResponseRedirect("/home")
 
+def breakconnection(request,name):
+    user = userprofile.objects.get(name=request.user)
+    seuser = userprofile.objects.get(name=name)
+
+    lst = list(user.connections)
+    lst.remove(seuser.name)
+    user.connections = lst
+
+    lst1 = list(seuser.connections)
+    lst1.remove(user.name)
+    seuser.connections = lst1
+
+    user.save()
+    seuser.save()
+    return HttpResponseRedirect("/home")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")

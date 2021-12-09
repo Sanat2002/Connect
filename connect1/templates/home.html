@@ -305,7 +305,7 @@
             {% endif %}
             <div class="cnname">{{connection.name}}</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 1vw;">Break Connection</button></a>
+            <a href="{% url 'breakconnection' connection.name %}"><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 1vw;">Break Connection</button></a>
 
           </div>
           {% endfor %}
