@@ -219,19 +219,24 @@
         </div>
 
         {% for connection in connectionsposts %}
-        {% for posts in connection %}   
+        {% for post in connection.posts %}   
         <div style="border: 1px solid greenyellow; margin: .5vw;">
-          
+
           <div class="d-flex">
-            <img src="{{user.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
-            <div style="margin-left: 1vw;">{{user.name}}</div>
+            {% if connection.connection.profile_pic %}
+            <img src="{{connection.connection.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
+            {% else %}
+            <div style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;background-color:black;"></div>
+            {% endif %}
+            <div style="margin-left: 1vw;">{{connection.connection.name}}</div>
           </div>
 
           <div style="border: .2px solid black;"></div>
 
           <div class="d-flex justify-content-center" style="background-color: rgb(219 219 219);"> 
-          <img src="{{userpost}}" alt="Error!!!" style="height: 30vw;margin: .2vw 0;">
+          <img src="{{post}}" alt="Error!!!" style="height: 30vw;margin: .2vw 0;">
           </div>
+
           <div style="margin-left: .2vw;">
             Like
           </div>
@@ -253,9 +258,11 @@
           <div class="d-flex justify-content-center" style="background-color: rgb(219 219 219);"> 
           <img src="{{userpost}}" alt="Error!!!" style="height: 30vw;margin: .2vw 0;">
           </div>
+          
           <div style="margin-left: .2vw;">
             Like
           </div>
+
         </div>
         {% endfor %}
         
