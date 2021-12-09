@@ -109,7 +109,13 @@ def home(request):
         noofconnections = len(user.connections)
         noofpendingconnections = len(user.pendingconnections)
 
-        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections,"connections":connections,"pendingconnections":pendingconnections})
+        # connections posts
+        connectionsposts = []
+        for connection in connections:
+            connectionsposts.append(connection.posts)
+        print(connectionsposts)
+
+        return render(request,"home.html",{"user":user,"usersuggestions":usersuggestions,"userposts":userposts,"connectionrequests":connectionrequests,"noofposts":noofposts,"noofconnections":noofconnections,"noofpendingconnections":noofpendingconnections,"connections":connections,"pendingconnections":pendingconnections,"connectionsposts":connectionsposts})
     return HttpResponseRedirect("/")
 
 def profile(request):
