@@ -274,7 +274,16 @@ def deletependingconnection(request,name):
     user = userprofile.objects.get(name=request.user)
     seuser = userprofile.objects.get(name=name)
 
-    
+    lst = list(user.pendingconnections)
+    lst.remove(seuser.name)
+    user.pendingconnections = lst  
+
+    lst1 = list(seuser.connectionrequests)
+    lst1.remove(user.name)
+    seuser.connectionrequests = lst1
+
+    user.save()
+    seuser.save()
     return HttpResponseRedirect("/home")
 
 def userlogout(request):

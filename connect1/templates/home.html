@@ -337,7 +337,7 @@
             {% endif %}
             <div class="pendcnname">{{connection.name}}</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 6vw;">Delete</button></a>
+            <a href="{% url 'deletependingconnection' connection.name %}"><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 6vw;">Delete</button></a>
 
           </div>
           {% endfor %}
