@@ -115,7 +115,7 @@
 
       <div style="margin-left: 2vw;margin-top: 1vw;width:30vw;">
         {% if user.profile_pic %}
-        <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+        <img src="{{user.profile_pic}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
         {% else %}
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>
@@ -153,7 +153,7 @@
 
               <div class="d-flex" style="height:7vw;padding: .3vw;">
                 {% if requests.profile_pic %}
-                <img src="{{requests.profile_pic.url}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+                <img src="{{requests.profile_pic}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
                 {% else %}
                 <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
                 {% endif %}
@@ -206,7 +206,7 @@
           {% for users in usersuggestions %}
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             {% if users.profile_pic %}
-            <img src="{{users.profile_pic.url}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;">
+            <img src="{{users.profile_pic}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;">
             {% else %}
             <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;">
             </div>
@@ -247,7 +247,7 @@
 
       <div class="d-flex flex-column" style="margin-left:1vw">
       {% if user.profile_pic %}
-      <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+      <img src="{{user.profile_pic}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
       {% else %}
       <div style="height:15vw;width:15vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
       {% endif %}
@@ -297,7 +297,7 @@
         <div class="cncontainer">
 
           {% for connection in connections %}
-          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
+          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw 1vw;;">
             {% if connection.profile_pic %}
             <img src="{{connection.profile_pic}}" alt="" style="height:5vw;width:5vw;border-radius:10vw;">
             {% else %}
@@ -305,7 +305,7 @@
             {% endif %}
             <div class="cnname">{{connection.name}}</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 2vw;">Break Connection</button></a>
+            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 1vw;">Break Connection</button></a>
 
           </div>
           {% endfor %}
@@ -329,7 +329,7 @@
         <div class="pendcncontainer">
 
           {% for connection in pendingconnections %}
-          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw .4vw;;">
+          <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw 1.2vw;;">
             {% if connection.profile_pic %}
             <img src="{{connection.profile_pic}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
             {% else %}
@@ -337,7 +337,7 @@
             {% endif %}
             <div class="pendcnname">{{connection.name}}</div>
 
-            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 7vw;">Delete</button></a>
+            <a href=""><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 6vw;">Delete</button></a>
 
           </div>
           {% endfor %}
