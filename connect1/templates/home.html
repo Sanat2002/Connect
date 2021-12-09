@@ -323,7 +323,7 @@
         <div onclick="hideconnections()" style="transform: rotate(-182deg);font-size: 3vw;font-weight: bolder;cursor: pointer;">+</div>
         
         <div>
-          <input type="text" name="" id="" style="width: 35vw;margin-left: 2.4vw;height: 2.3vw;font-size: 1.2vw;" placeholder="Search">
+          <input type="text" name="" id="coninp" style="width: 35vw;margin-left: 2.4vw;height: 2.3vw;font-size: 1.2vw;" placeholder="Search">
         </div>
 
         <div style="border: .5px solid black;margin: .7vw 1vw;"></div>
@@ -403,6 +403,24 @@
         document.getElementById("connections").style.display = "none"
       }
 
+      document.getElementById("coninp").addEventListener('input',(e)=>{
+        var search = document.getElementById("coninp")
+        elems = document.getElementsByClassName("cnname")
+        for(var i of elems){
+          if(i.innerHTML.includes(search.value)){
+            i.parentNode.className = "d-flex"
+          }
+          else{
+            i.parentNode.className = "d-none"
+          }
+        }
+        if(search.value == null){
+          for(let ele of elems){
+            ele.parentNode.className ="d-flex"
+          }
+        }
+      })
+
 
       // pendingconnections
       function pendingconnections(){
@@ -416,19 +434,23 @@
       }
 
       document.getElementById("pendinp").addEventListener('input',(e)=>{
+        var search = document.getElementById("pendinp")
         elems = document.getElementsByClassName("pendcnname")
         for(var i of elems){
-          if(i.innerHTML.includes(e.data)){
-            console.log("SSLSL")
-            i.parentNode.classList.remove("d-none")
-            i.parentNode.classList += " d-flex"
+          if(i.innerHTML.includes(search.value)){
+            i.parentNode.className = "d-flex"
           }
           else{
-            console.log("slsl")
-            i.parentNode.classList += " d-none"
+            i.parentNode.className = "d-none"
+          }
+        }
+        if(search.value == null){
+          for(let ele of elems){
+            ele.parentNode.className ="d-flex"
           }
         }
       })
+
 
       // sideBar
       document.getElementById("show").addEventListener('click',(e)=>{
