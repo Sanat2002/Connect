@@ -206,12 +206,12 @@
           {% for users in usersuggestions %}
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             {% if users.profile_pic %}
-            <img src="{{users.profile_pic}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;cursor: pointer;">
+            <a href=""><img src="{{users.profile_pic}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;cursor: pointer;"></a>
             {% else %}
-            <div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;cursor: pointer;">
-            </div>
+            <a href=""><div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;cursor: pointer;">
+            </div></a>
             {% endif %}
-            <div class="text-center" style="font-size: 1.3vw;font-weight: bold;cursor: pointer;">{{users.name}}</div>
+            <a href=""><div class="text-center" style="font-size: 1.3vw;font-weight: bold;cursor: pointer;">{{users.name}}</div></a>
             <a href="{% url 'sendconnectionreq' users.name %}"><button class="btn btn-success" style="width: 7.9vw;">Connect</button></a>
           </div>
           {% endfor %}
