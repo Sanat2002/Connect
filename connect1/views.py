@@ -291,6 +291,9 @@ def deletependingconnection(request,name):
     seuser.save()
     return HttpResponseRedirect("/home")
 
+def showprofile(request,name):
+    return render(request,"showprofile.html")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
