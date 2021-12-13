@@ -297,6 +297,7 @@ def showprofile(request,name):
     sug = False
 
     user = userprofile.objects.get(name=request.user)
+    showuser = userprofile.objects.get(name=name)
 
     lst = list(user.pendingconnections)
     for names in lst:
@@ -311,7 +312,7 @@ def showprofile(request,name):
     if pndcon == False and con == False:
         sug = True
 
-    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug})
+    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser})
 
 def userlogout(request):
     logout(request)
