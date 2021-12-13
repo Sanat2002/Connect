@@ -292,7 +292,27 @@ def deletependingconnection(request,name):
     return HttpResponseRedirect("/home")
 
 def showprofile(request,name):
-    return render(request,"showprofile.html")
+    pndcon = False
+    con = False
+    sug = False
+
+    user = userprofile.objects.get(name=request.user)
+
+    lst = list(user.pendingconnections)
+    for names in lst:
+        if names == name:
+            pndcon = True
+    
+    lst1 = list(user.connections)
+    for names in lst1:
+        if names == name:
+            con = True
+    
+    if pndcon == False and con == False:
+        sug = True
+
+
+    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug})
 
 def userlogout(request):
     logout(request)
