@@ -311,7 +311,6 @@ def showprofile(request,name):
     if pndcon == False and con == False:
         sug = True
 
-
     return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug})
 
 def userlogout(request):

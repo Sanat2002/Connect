@@ -333,11 +333,11 @@
           {% for connection in connections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .4vw 1vw;border-bottom: .5px solid rgb(66, 63, 63);">
             {% if connection.profile_pic %}
-            <img src="{{connection.profile_pic}}" alt="Error!!!" style="height:5vw;width:5vw;border-radius:10vw;">
+            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic}}" alt="Error!!!" style="height:5vw;width:5vw;border-radius:10vw;"></a>
             {% else %}
-            <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
+            <a href="{% url 'showprofile' connection.name %}"><div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div></a>
             {% endif %}
-            <div class="cnname">{{connection.name}}</div>
+            <a href="{% url 'showprofile' connection.name %}" style="text-decoration: none;color: black;cursor: pointer;"><div class="cnname">{{connection.name}}</div></a>
 
             <a href="{% url 'breakconnection' connection.name %}"><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 1vw;">Break Connection</button></a>
           </div>
@@ -365,11 +365,11 @@
           {% for connection in pendingconnections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw 1.2vw;border-bottom: .5px solid rgb(66, 63, 63);">
             {% if connection.profile_pic %}
-            <img src="{{connection.profile_pic}}" alt="Error!!!" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic}}" alt="Error!!!" style="height: 5vw;width: 5vw;border-radius: 10vw;cursor: pointer;"></a>
             {% else %}
-            <div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div>
+            <a href="{% url 'showprofile' connection.name %}"><div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;cursor: pointer;"></div></a>
             {% endif %}
-            <div class="pendcnname">{{connection.name}}</div>
+            <a href="{% url 'showprofile' connection.name %}" style="text-decoration: none;color: black;cursor: pointer;"><div class="pendcnname">{{connection.name}}</div></a>
 
             <a href="{% url 'deletependingconnection' connection.name %}"><button class="btn btn-danger" style="margin-top: 1.4vw;margin-left: 6vw;">Delete</button></a>
 
