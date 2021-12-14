@@ -16,7 +16,7 @@
     }
 
     .bio {
-      height: 6vw;
+      height: 4vw;
       overflow: scroll;
     }
 
@@ -33,7 +33,7 @@
   {% if sug %}
   <div style="display: flex;flex-direction: column;">
 
-    <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
+    <div style="width: 50vw;margin-top: 1vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
       <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
@@ -74,7 +74,7 @@
   {% if pndcon %}
   <div style="display: flex;flex-direction: column;">
 
-    <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
+    <div style="width: 50vw;margin-top: 1vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
       <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
@@ -115,7 +115,7 @@
   {% if con %}
   <div style="display: flex;flex-direction: column;align-items: center;">
 
-    <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
+    <div style="width: 50vw;margin-top: 1vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
       <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
@@ -147,7 +147,7 @@
 
     </div>
 
-    <div style="border-top: 1px solid black;margin-top: 1vw;display: flex;justify-content: space-around; flex-wrap: wrap; width: 60vw;">
+    <div style="border-top: 1.7px solid black;border-left: .7px solid black;border-right: .7px solid black; margin-top: 1vw;display: flex;justify-content: space-around; flex-wrap: wrap; width: 60vw;">
 
       {% comment %} in this case when we use {{post}} in image tag it does not show up because whenever we use {{post}} in img tag it searches the image in after removing one directory from the current open url(page url) and now in this page we have two dire (showprofile) and (nameofshowuser) , now when we use post in img tag it removes one diret (nameofshowuser) ,after that the current url have showprofile dire in it (in this path it searches for image ) so it gives error hence to prevent this i user http://127.0.0.1:8000/{{post}} {% endcomment %}
 
