@@ -154,7 +154,7 @@
 
               <div class="d-flex" style="height:7vw;padding: .3vw;">
                 {% if requests.profile_pic %}
-                <img src="{{requests.profile_pic}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
+                <img src="{{requests.profile_pic.url}}" alt="" style="height: 5vw;width: 5vw;border-radius: 10vw;">
                 {% else %}
                 <div style="height: 5vw;width: 5vw;background-color: black;border-radius: 10vw;"></div>
                 {% endif %}
@@ -207,7 +207,7 @@
           {% for users in usersuggestions %}
           <div class="d-flex flex-column" style="margin: .2vw;width: 8vw;">
             {% if users.profile_pic %}
-            <a href="{% url 'showprofile' users.name %}"><img src="{{users.profile_pic}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;cursor: pointer;"></a>
+            <a href="{% url 'showprofile' users.name %}"><img src="{{users.profile_pic.url}}" alt="Unable to load image!!!" style="height:8vw;width:8vw;border-radius:10vw;cursor: pointer;"></a>
             {% else %}
             <a href="{% url 'showprofile' users.name %}"><div style="background-color: black;height: 8vw;width: 8vw;border-radius: 10vw;cursor: pointer;">
             </div></a>
@@ -225,7 +225,7 @@
 
           <div class="d-flex">
             {% if connection.connection.profile_pic %}
-            <img src="{{connection.connection.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
+            <img src="{{connection.connection.profile_pic.url}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
             {% else %}
             <div style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;background-color:black;"></div>
             {% endif %}
@@ -251,7 +251,7 @@
 
           <div class="d-flex">
             {% if user.profile_pic %}
-            <img src="{{user.profile_pic}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
+            <img src="{{user.profile_pic.url}}" alt="Error!!!" style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;">
             {% else %}
             <div style="height: 3vw;width: 3vw;border-radius: 10vw;margin: .1vw;background-color:black;"></div>
             {% endif %}
@@ -282,7 +282,7 @@
 
       <div class="d-flex flex-column" style="margin-left:1vw">
       {% if user.profile_pic %}
-      <img src="{{user.profile_pic}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+      <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
       {% else %}
       <div style="height:15vw;width:15vw;background-color: white;border-radius: 20vw;margin-bottom: 1vw;"></div>
       {% endif %}
@@ -334,7 +334,7 @@
           {% for connection in connections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .4vw 1vw;border-bottom: .5px solid rgb(66, 63, 63);">
             {% if connection.profile_pic %}
-            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic}}" alt="Error!!!" style="height:5vw;width:5vw;border-radius:10vw;"></a>
+            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic.url}}" alt="Error!!!" style="height:5vw;width:5vw;border-radius:10vw;"></a>
             {% else %}
             <a href="{% url 'showprofile' connection.name %}"><div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;"></div></a>
             {% endif %}
@@ -366,7 +366,7 @@
           {% for connection in pendingconnections %}
           <div class="d-flex" style="height: 6vw;padding: .2vw;margin: .2vw 1.2vw;border-bottom: .5px solid rgb(66, 63, 63);">
             {% if connection.profile_pic %}
-            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic}}" alt="Error!!!" style="height: 5vw;width: 5vw;border-radius: 10vw;cursor: pointer;"></a>
+            <a href="{% url 'showprofile' connection.name %}"><img src="{{connection.profile_pic.url}}" alt="Error!!!" style="height: 5vw;width: 5vw;border-radius: 10vw;cursor: pointer;"></a>
             {% else %}
             <a href="{% url 'showprofile' connection.name %}"><div style="background-color: black;height: 5vw;width: 5vw;border-radius: 10vw;cursor: pointer;"></div></a>
             {% endif %}

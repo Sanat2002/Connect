@@ -25,7 +25,7 @@
 
             <div class="d-flex flex-column align-items-center" style="margin-bottom: 2vw;">
                 {% if user.profile_pic %}
-                <img src="{{user.profile_pic}}" alt="Error in loading image!!!" style="height: 10vw;
+                <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 10vw;
                 width: 10vw; border-radius: 10vw;">
                 {% else %}
                 <div style="height: 10vw;width: 10vw;border-radius: 20vw;background-color:black;">
