@@ -112,7 +112,7 @@
   {% endif %}
 
   <!-- thirdpage -->
-  <!-- {% if con %} -->
+  {% if con %}
   <div style="display: flex;flex-direction: column;align-items: center;">
 
     <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
@@ -149,20 +149,18 @@
 
     <div style="border: 1px solid black;margin-top: 1vw;display: flex;justify-content: space-around; flex-wrap: wrap; width: 60vw;">
 
-      <!-- replace width with max-width -->
+      {% comment %} in this case when we use {{post}} in image tag it does not show up because whenever we use {{post}} in img tag it searches the image in after removing one directory from the current open url(page url) and now in this page we have two dire (showprofile) and (nameofshowuser) , now when we use post in img tag it removes one diret (nameofshowuser) ,after that the current url have showprofile dire in it (in this path it searches for image ) so it gives error hence to prevent this i user http://127.0.0.1:8000/{{post}} {% endcomment %}
+
       {% for post in showuser.posts %}
       <div style="margin: .5vw 0;">
-        {% comment %} <img src="/uploads/20211209220122Group.JPG" alt="Error!!!" style="height: 26vw;max-width: 29vw;"> {% endcomment %} 
-        <img src="{{post}}" alt="{{post}}">
-        <!-- <img src="post" alt="ri"> -->
-        {{post}}
+        <img src="http://127.0.0.1:8000/{{post}}" alt="Error!!!" style="height: 26vw;max-width: 29vw;">
       </div>
       {% endfor %}
       
     </div>
 
   </div>
-  <!-- {% endif %} -->
+   {% endif %}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
