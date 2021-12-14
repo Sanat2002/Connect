@@ -36,24 +36,24 @@
     <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
-      <img src="{{showuser.profile_pic}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
+      <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
       {% else %}
       <div style="background-color: black;height: 12vw;width: 12vw;border-radius: 10vw;"></div>
       {% endif %}
 
       <div style="width: 30vw;">
 
-        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">Sanat Thakur</div>
+        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">{{showuser.name}}</div>
 
         <div style="display: flex;">
 
           <div>
-            <div style="text-align: center;font-size: 1.6vw;">2</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofposts}}</div>
             <div style="font-size: 1.2vw;color: rgb(69, 69, 238);">Posts</div>
           </div>
 
           <div style="margin-left: 5vw;">
-            <div style="text-align: center;font-size: 1.6vw;">0</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofcons}}</div>
             <div style="font-size: 1.2vw;color: rgb(50, 216, 50);">Connections</div>
           </div>
 
@@ -77,24 +77,24 @@
     <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
-      <img src="{{showuser.profile_pic}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
+      <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
       {% else %}
       <div style="background-color: black;height: 12vw;width: 12vw;border-radius: 10vw;"></div>
       {% endif %}
 
       <div style="width: 30vw;">
 
-        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">Sanat Thakur</div>
+        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">{{showuser.name}}</div>
 
         <div style="display: flex;">
 
           <div>
-            <div style="text-align: center;font-size: 1.6vw;">2</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofposts}}</div>
             <div style="font-size: 1.2vw;color: rgb(69, 69, 238);">Posts</div>
           </div>
 
           <div style="margin-left: 5vw;">
-            <div style="text-align: center;font-size: 1.6vw;">0</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofcons}}</div>
             <div style="font-size: 1.2vw;color: rgb(50, 216, 50);">Connections</div>
           </div>
 
@@ -118,24 +118,24 @@
     <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
-      <img src="{{showuser.profile_pic}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
+      <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
       {% else %}
       <div style="background-color: black;height: 12vw;width: 12vw;border-radius: 10vw;"></div>
       {% endif %}
 
       <div style="width: 30vw;">
 
-        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">Sanat Thakur</div>
+        <div style="font-size: 2.3vw;font-family: 'Times New Roman', Times, serif;">{{showuser.name}}</div>
 
         <div style="display: flex;">
 
           <div>
-            <div style="text-align: center;font-size: 1.6vw;">2</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofposts}}</div>
             <div style="font-size: 1.2vw;color: rgb(69, 69, 238);">Posts</div>
           </div>
 
           <div style="margin-left: 5vw;">
-            <div style="text-align: center;font-size: 1.6vw;">0</div>
+            <div style="text-align: center;font-size: 1.6vw;">{{noofcons}}</div>
             <div style="font-size: 1.2vw;color: rgb(50, 216, 50);">Connections</div>
           </div>
 
@@ -150,10 +150,12 @@
     <div style="border: 1px solid black;margin-top: 1vw;display: flex;justify-content: space-around; flex-wrap: wrap; width: 60vw;">
 
       <!-- replace width with max-width -->
-      <div style="border: 1px solid black;height: 26vw;width: 29vw;margin: .5vw 0;"></div>
-      <div style="border: 1px solid black;height: 26vw;width: 29vw;margin: .5vw 0;"></div>
-      <div style="border: 1px solid black;height: 26vw;width: 29vw;margin: .5vw 0;"></div>
-      <div style="border: 1px solid black;height: 26vw;width: 29vw;margin: .5vw 0;"></div>
+      {% for post in l %}
+      <div style="margin: .5vw 0;">
+        <img src="{{post}}" alt="Error!!!" style="height: 26vw;max-width: 29vw;">
+        {{post}}
+      </div>
+      {% endfor %}
       
     </div>
 

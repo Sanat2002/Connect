@@ -138,10 +138,9 @@ def profile(request):
             us.email = email
             us.save()
 
-            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic,posts=us2.posts)
+            u = userprofile(id=us2.id,name=username,bio=bio,email=email,phoneno=phno,gender=gender,profile_pic=profilepic,posts=us2.posts,connections=us2.connections,connectionrequests=us2.connectionrequests,pendingconnections=us2.pendingconnections)
             u.save()
             us2 = userprofile.objects.get(name=username)
-            print(us2.profile_pic.url)
             messages.success(request,"Profile updated!!!")            
         return render(request,"profile.html",{"user":us2})
     return HttpResponseRedirect("/")
@@ -298,6 +297,11 @@ def showprofile(request,name):
 
     user = userprofile.objects.get(name=request.user)
     showuser = userprofile.objects.get(name=name)
+    
+    l = list(showuser.posts)
+    print(l)
+    noofposts = len(showuser.posts)
+    noofcons = len(showuser.connections)
 
     lst = list(user.pendingconnections)
     for names in lst:
@@ -312,7 +316,7 @@ def showprofile(request,name):
     if pndcon == False and con == False:
         sug = True
 
-    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser})
+    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser,"noofposts":noofposts,"noofcons":noofcons,"l":l})
 
 def userlogout(request):
     logout(request)
