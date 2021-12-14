@@ -441,12 +441,12 @@
             i.parentNode.parentNode.className = "d-flex"
           }
           else{
-            i.parentNode.className = "d-none"
+            i.parentNode.parentNode.className = "d-none"
           }
         }
         if(search.value == null){
           for(let ele of elems){
-            ele.parentNode.className ="d-flex"
+            ele.parentNode.parentNode.className ="d-flex"
           }
         }
       })
