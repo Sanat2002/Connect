@@ -152,7 +152,7 @@
       {% comment %} in this case when we use {{post}} in image tag it does not show up because whenever we use {{post}} in img tag it searches the image in after removing one directory from the current open url(page url) and now in this page we have two dire (showprofile) and (nameofshowuser) , now when we use post in img tag it removes one diret (nameofshowuser) ,after that the current url have showprofile dire in it (in this path it searches for image ) so it gives error hence to prevent this i user http://127.0.0.1:8000/{{post}} {% endcomment %}
 
       {% for post in showuser.posts %}
-      <div style="margin: .5vw 0;">
+      <div style="margin: .5vw 0;background-color:rgb(219 219 219);padding:0vw .3vw;">
         <img src="http://127.0.0.1:8000/{{post}}" alt="Error!!!" style="height: 26vw;max-width: 29vw;">
       </div>
       {% endfor %}
