@@ -290,33 +290,38 @@ def deletependingconnection(request,name):
     seuser.save()
     return HttpResponseRedirect("/home")
 
-def showprofile(request,name):
-    pndcon = False
-    con = False
-    sug = False
+# def showprofile(request,name):
+#     pndcon = False
+#     con = False
+#     sug = False
 
+#     user = userprofile.objects.get(name=request.user)
+#     showuser = userprofile.objects.get(name=name)
+    
+#     l = list(showuser.posts)
+#     print(l)
+#     noofposts = len(showuser.posts)
+#     noofcons = len(showuser.connections)
+
+#     lst = list(user.pendingconnections)
+#     for names in lst:
+#         if names == name:
+#             pndcon = True
+    
+#     lst1 = list(user.connections)
+#     for names in lst1:
+#         if names == name:
+#             con = True
+    
+#     if pndcon == False and con == False:
+#         sug = True
+
+#     return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser,"noofposts":noofposts,"noofcons":noofcons,"l":l})
+
+def showprofile(request):
     user = userprofile.objects.get(name=request.user)
-    showuser = userprofile.objects.get(name=name)
-    
-    l = list(showuser.posts)
-    print(l)
-    noofposts = len(showuser.posts)
-    noofcons = len(showuser.connections)
 
-    lst = list(user.pendingconnections)
-    for names in lst:
-        if names == name:
-            pndcon = True
-    
-    lst1 = list(user.connections)
-    for names in lst1:
-        if names == name:
-            con = True
-    
-    if pndcon == False and con == False:
-        sug = True
-
-    return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser,"noofposts":noofposts,"noofcons":noofcons,"l":l})
+    return render(request,"showprofile.html",{"showuser":user})
 
 def userlogout(request):
     logout(request)
