@@ -115,7 +115,8 @@
 
       <div style="margin-left: 2vw;margin-top: 1vw;width:30vw;">
         {% if user.profile_pic %}
-        <img src="{{user.profile_pic}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+        <img src="{{user.profile_pic.url}}" alt="Error in loading image!!!" style="height: 15vw;width: 15vw;border-radius: 20vw;">
+        {{user.profile_pic.url}}
         {% else %}
         <div style="height: 15vw;width: 15vw;background-color: black;border-radius: 30vw;">
         </div>

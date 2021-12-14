@@ -118,7 +118,7 @@
     <div style="width: 50vw;margin-top: .2vw;display: flex;justify-content: space-between;">
 
       {% if showuser.profile_pic %}
-      <img src="{{showuser.profile_pic.url}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
+      <img src="{{showuser.profile_pic}}" alt="Error!!!" style="height: 12vw;width: 12vw;border-radius: 10vw;">
       {% else %}
       <div style="background-color: black;height: 12vw;width: 12vw;border-radius: 10vw;"></div>
       {% endif %}
@@ -152,7 +152,8 @@
       <!-- replace width with max-width -->
       {% for post in l %}
       <div style="margin: .5vw 0;">
-        <img src="{{post}}" alt="Error!!!" style="height: 26vw;max-width: 29vw;">
+        {% comment %} <img src="uploads/20211209220122Group.JPG" alt="Error!!!" style="height: 26vw;max-width: 29vw;"> {% endcomment %}
+        <img src="{{post}}" alt="">
         {{post}}
       </div>
       {% endfor %}
