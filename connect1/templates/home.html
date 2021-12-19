@@ -407,8 +407,9 @@
           <form action="" method="post">
             {% csrf_token %}
             <input type="text" name="" id="" style="margin: .5vw;">
+            {% comment %} <a href="" style="text-align: end;margin-top: 1.1vw;margin-right: .3vw;"><button class="btn btn-danger">Delete Account</button></a> {% endcomment %}
+            <input type="submit" value="Delete Account" class="btn btn-danger">
           </form>
-          <a href="" style="text-align: end;margin-top: 1.1vw;margin-right: .3vw;"><button class="btn btn-danger">Delete Account</button></a>
 
         </div>
       </div>
