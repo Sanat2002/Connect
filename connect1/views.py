@@ -77,6 +77,12 @@ def login(request):
 def home(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
+        if request.method == "POST":
+            delaccemail = request.POST.get('delaccemail')
+            if delaccemail == user.email:
+                user.delete()
+                return HttpResponseRedirect("/")
+            
         userposts = user.posts
         
         usersuggestions = list(userprofile.objects.all())
