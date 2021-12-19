@@ -15,5 +15,6 @@ urlpatterns = [
     path('breakconnection/<name>',views.breakconnection,name="breakconnection"),
     path('deletependingconnection/<name>',views.deletependingconnection,name="deletependingconnection"),
     path('showprofile/<name>',views.showprofile,name="showprofile"),
+    path('delacc/<email>',views.deleteaccount,name="delacc"),
     path('logout',views.userlogout,name="logout"),
 ]

@@ -316,6 +316,11 @@ def showprofile(request,name):
 
     return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser,"noofposts":noofposts,"noofcons":noofcons})
 
+def deleteaccount(request,email):
+    user = userprofile.objects.get(name=request.user)
+    print(email)
+    return HttpResponseRedirect("/home")
+
 def userlogout(request):
     logout(request)
     messages.success(request,"Successfully Logged Out!!!")
