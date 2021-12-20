@@ -77,13 +77,6 @@ def login(request):
 def home(request):
     if request.user.is_authenticated:
         user = userprofile.objects.get(name=request.user)
-        if request.method == "POST":
-            delaccemail = request.POST.get('delaccemail')
-            if delaccemail == user.email:
-                user.delete()
-                return HttpResponseRedirect("/")
-            messages.error(request,"Enter correct email address!!!")
-            return HttpResponseRedirect("/home")
         userposts = user.posts
         
         usersuggestions = list(userprofile.objects.all())
@@ -323,10 +316,12 @@ def showprofile(request,name):
 
     return render(request,"showprofile.html",{"pndcon":pndcon,"con":con,"sug":sug,"showuser":showuser,"noofposts":noofposts,"noofcons":noofcons})
 
-def deleteaccount(request,email):
+def deleteaccount(request):
     user = userprofile.objects.get(name=request.user)
-    print(email)
-    return HttpResponseRedirect("/home")
+    user1 = get_user_model().objects.get(name=request.user)
+    user1.delete()
+    user.delete()
+    return HttpResponseRedirect("/")
 
 def userlogout(request):
     logout(request)
