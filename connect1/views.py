@@ -82,7 +82,8 @@ def home(request):
             if delaccemail == user.email:
                 user.delete()
                 return HttpResponseRedirect("/")
-            
+            messages.error(request,"Enter correct email address!!!")
+            return HttpResponseRedirect("/home")
         userposts = user.posts
         
         usersuggestions = list(userprofile.objects.all())
