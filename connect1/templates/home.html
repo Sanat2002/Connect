@@ -506,7 +506,13 @@
 
       })
       function checkdelacc(useremail){
-        console.log(useremail)
+        var el = document.getElementById("delaccinput")
+        if(el.value == useremail){
+          window.location.href = `http://127.0.0.1:8000/delacc/${useremail}`
+        }
+        else{
+          alert("Enter the correct email address!!!")
+        }
       }
 
 
