@@ -408,11 +408,11 @@
             Type your Email-address to delete account!!!
           </div>
 
-          <form action="" method="post" style="display: flex;flex-direction: column;align-items: flex-end;">
-            {% csrf_token %}
-            <input type="text" name="delaccemail" id="delaccinput" style="margin: .5vw;width: 28vw;">
-            <input type="submit" value="Delete Account" id="{{user.email}}" onclick="checkdelacc(this.id)" class="btn btn-danger delaccsubmit" style="margin-top: 1.1vw;margin-right: .3vw;">
-          </form>
+          <!-- <form action="" method="post" style="display: flex;flex-direction: column;align-items: flex-end;"> -->
+            <!-- {% csrf_token %} -->
+          <input type="text" name="delaccemail" id="delaccinput" style="margin: .5vw;width: 28vw;">
+          <input type="submit" value="Delete Account" id="{{user.email}}" onclick="checkdelacc(this.id)" class="btn btn-danger delaccsubmit" style="margin-top: 1.1vw;margin-right: .3vw;">
+          <!-- </form> -->
 
         </div>
       </div>
@@ -502,9 +502,8 @@
 
       document.getElementsByClassName('delaccsubmit')[0].addEventListener('click',(e)=>{
         e.preventDefault()
-       var value = document.getElementById("delaccinput")
-
       })
+
       function checkdelacc(useremail){
         var el = document.getElementById("delaccinput")
         if(el.value == useremail){
