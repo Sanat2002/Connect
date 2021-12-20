@@ -318,7 +318,10 @@ def showprofile(request,name):
 
 def deleteaccount(request):
     user = userprofile.objects.get(name=request.user)
-    user1 = get_user_model().objects.get(name=request.user)
+    user1 = get_user_model().objects.get(username=request.user)
+    listuser2 = userverify.objects.filter(name=request.user)
+    for user2 in listuser2:
+        user2.delete()
     user1.delete()
     user.delete()
     return HttpResponseRedirect("/")
