@@ -411,7 +411,7 @@
           <form action="" method="post" style="display: flex;flex-direction: column;align-items: flex-end;">
             {% csrf_token %}
             <input type="text" name="delaccemail" id="delaccinput" style="margin: .5vw;width: 28vw;">
-            <input type="submit" value="Delete Account" onclick="checkdelacc(user.email)" id="delaccsubmit" class="btn btn-danger" style="margin-top: 1.1vw;margin-right: .3vw;">
+            <input type="submit" value="Delete Account" class="btn btn-danger" style="margin-top: 1.1vw;margin-right: .3vw;">
           </form>
 
         </div>
@@ -500,11 +500,11 @@
         document.getElementById("deleteaccount").style.display = "flex"
       })
 
-      document.getElementById('delaccsubmit').addEventListener('click',(e)=>{
-        e.preventDefault()
-       var value = document.getElementById("delaccinput")
+      // document.getElementById('delaccsubmit').addEventListener('click',(e)=>{
+      //   // e.preventDefault()
+      //  var value = document.getElementById("delaccinput")
 
-      })
+      // })
       function checkdelacc(useremail){
         console.log(useremail)
       }
@@ -516,6 +516,7 @@
       document.getElementById("show").addEventListener('click',(e)=>{
         var s = document.getElementById("sidebar");
         s.style.left = 0
+        console.log("elel")
       })
       document.getElementById("hide").addEventListener('click',(e)=>{
         var s = document.getElementById("sidebar");
